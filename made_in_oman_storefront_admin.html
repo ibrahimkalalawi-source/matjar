@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>صُنع في عُمان | Made in Oman — المشغولات اليدوية والتصاميم الرقمية</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            arabic: ['Tajawal', 'Cairo', 'sans-serif'],
+            english: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            oman: {
+              terracotta: '#B85D3B',
+              terracottaDark: '#944528',
+              sand: '#F6F1EA',
+              sandDark: '#EAE0D2',
+              brass: '#C59B38',
+              brassLight: '#E3C36E',
+              charcoal: '#1C1917',
+              ink: '#292524',
+              frankincense: '#4A5D4E',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --bg-primary: #FAF7F2;
+      --bg-card: #FFFFFF;
+      --text-primary: #1C1917;
+      --text-muted: #57534E;
+      --border-subtle: #E7DFD3;
+    }
+    html.dark {
+      --bg-primary: #141210;
+      --bg-card: #1F1C19;
+      --text-primary: #F5F2EB;
+      --text-muted: #A8A29E;
+      --border-subtle: #332E29;
+    }
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+    html[dir="rtl"] body {
+      font-family: 'Tajawal', 'Cairo', sans-serif;
+    }
+    html[dir="ltr"] body {
+      font-family: 'Plus Jakarta Sans', 'Tajawal', sans-serif;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    /* Subtle Omani geometric watermark pattern */
+    .oman-pattern {
+      background-image: radial-gradient(circle at 2px 2px, rgba(197, 155, 56, 0.16) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+    .animate-float {
+      animation: floatSlow 5s ease-in-out infinite;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(184, 93, 59, 0.35); border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(184, 93, 59, 0.65); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-oman-terracotta selection:text-white">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" aria-live="polite" class="fixed bottom-5 z-50 flex flex-col gap-2.5 max-w-sm w-full px-4 pointer-events-none ltr:right-4 rtl:left-4"></div>
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-oman-charcoal text-oman-sand text-xs sm:text-sm py-2 px-4 border-b border-oman-brass/30">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-oman-brass animate-pulse"></span>
+        <span data-i18n="topBanner">شحن محلي سريع لجميع محافظات سلطنة عُمان (مجاني للطلبات فوق 25.000 ر.ع.) • تسليم رقمي فوري للتصاميم</span>
+      </div>
+      <div class="flex items-center gap-4 text-xs text-oman-brassLight">
+        <span class="font-semibold tabular-nums">OMR / ر.ع.</span>
+        <span>•</span>
+        <button onclick="openPolicyModal('shipping')" class="hover:underline" data-i18n="localShippingPolicy">سياسة الشحن المحلي</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header / Navigation -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-[#FAF7F2]/90 dark:bg-[#141210]/90 border-b border-[#E7DFD3] dark:border-[#332E29]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
+      
+      <!-- Brand Identity -->
+      <button onclick="switchView('store')" class="flex items-center gap-3 text-start group focus:outline-none">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-oman-terracotta to-oman-brass flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+          <!-- Omani Arch / Khanjar Emblem SVG -->
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 2C7.5 2 4 6 4 11v10h16V11c0-5-3.5-9-8-9z" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 21v-6a3 3 0 0 1 6 0v6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="8" r="1.5" fill="currentColor"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-extrabold text-lg sm:text-xl tracking-tight text-oman-terracotta dark:text-oman-brassLight" data-i18n="brandName">صُنع في عُمان</span>
+            <span class="hidden md:inline-block text-[11px] font-semibold px-2 py-0.5 rounded-full bg-oman-brass/15 text-oman-terracotta dark:text-oman-brassLight border border-oman-brass/30">OMAN</span>
+          </div>
+          <p class="text-[11px] sm:text-xs text-stone-500 dark:text-stone-400" data-i18n="brandTagline">حِرف يدوية أصيلة وتصاميم رقمية</p>
+        </div>
+      </button>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-1 bg-stone-200/60 dark:bg-stone-800/60 p-1 rounded-xl border border-stone-300/50 dark:border-stone-700/50">
+        <button onclick="switchView('store')" id="nav-store" class="nav-tab px-4 py-2 rounded-lg text-sm font-bold transition-all bg-white dark:bg-stone-900 text-oman-terracotta dark:text-oman-brassLight shadow-sm" data-i18n="navStore">المتجر</button>
+        <button onclick="switchView('orders')" id="nav-orders" class="nav-tab px-4 py-2 rounded-lg text-sm font-semibold text-stone-600 dark:text-stone-300 hover:text-oman-terracotta transition-all flex items-center gap-1.5">
+          <span data-i18n="navOrders">طلباتي وتحميلاتي</span>
+          <span id="orders-badge" class="text-[11px] px-1.5 py-0.2 rounded-full bg-oman-terracotta text-white tabular-nums">1</span>
+        </button>
+        <button onclick="switchView('admin')" id="nav-admin" class="nav-tab px-4 py-2 rounded-lg text-sm font-semibold text-stone-600 dark:text-stone-300 hover:text-oman-terracotta transition-all flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-oman-brass" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+          <span data-i18n="navAdmin">لوحة التاجر</span>
+        </button>
+      </nav>
+
+      <!-- Action Controls -->
+      <div class="flex items-center gap-1.5 sm:gap-2">
+        <!-- Language Toggle -->
+        <button onclick="toggleLanguage()" class="px-2.5 sm:px-3 py-2 rounded-xl border border-[#E7DFD3] dark:border-[#332E29] bg-white dark:bg-[#1F1C19] text-xs sm:text-sm font-bold hover:border-oman-terracotta transition-colors flex items-center gap-1.5" aria-label="Switch Language">
+          <svg class="w-4 h-4 text-oman-terracotta" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+          </svg>
+          <span id="lang-label">English</span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button onclick="toggleTheme()" class="p-2 sm:p-2.5 rounded-xl border border-[#E7DFD3] dark:border-[#332E29] bg-white dark:bg-[#1F1C19] hover:border-oman-terracotta transition-colors" aria-label="Toggle Dark Mode">
+          <svg id="icon-sun" class="w-4 h-4 sm:w-5 sm:h-5 hidden dark:block text-oman-brassLight" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg id="icon-moon" class="w-4 h-4 sm:w-5 sm:h-5 block dark:hidden text-stone-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <!-- Wishlist Button -->
+        <button onclick="toggleWishlistDrawer()" class="relative p-2 sm:p-2.5 rounded-xl border border-[#E7DFD3] dark:border-[#332E29] bg-white dark:bg-[#1F1C19] hover:border-oman-terracotta transition-colors" aria-label="Wishlist">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5 text-stone-700 dark:text-stone-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+          <span id="wishlist-count" class="hidden absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-oman-brass text-white text-[11px] font-bold flex items-center justify-center tabular-nums">0</span>
+        </button>
+
+        <!-- Cart Button -->
+        <button onclick="toggleCartDrawer()" class="relative flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-oman-terracotta hover:bg-oman-terracottaDark text-white font-bold text-xs sm:text-sm shadow-sm transition-all">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <span class="hidden sm:inline" data-i18n="cartBtn">السلة</span>
+          <span id="cart-count" class="px-1.5 py-0.5 rounded-full bg-white text-oman-terracotta text-xs font-extrabold tabular-nums">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Secondary Nav Bar -->
+    <div class="lg:hidden flex items-center justify-around border-t border-[#E7DFD3] dark:border-[#332E29] bg-[#FAF7F2] dark:bg-[#141210] px-2 py-1.5 text-xs">
+      <button onclick="switchView('store')" id="mob-nav-store" class="flex-1 py-1.5 rounded-lg font-bold text-oman-terracotta dark:text-oman-brassLight bg-oman-terracotta/10" data-i18n="navStore">المتجر</button>
+      <button onclick="switchView('orders')" id="mob-nav-orders" class="flex-1 py-1.5 rounded-lg font-semibold text-stone-600 dark:text-stone-300" data-i18n="navOrders">طلباتي وتحميلاتي</button>
+      <button onclick="switchView('admin')" id="mob-nav-admin" class="flex-1 py-1.5 rounded-lg font-semibold text-stone-600 dark:text-stone-300" data-i18n="navAdmin">لوحة التاجر</button>
+    </div>
+  </header>
+
+  <!-- ==================== VIEW 1: STOREFRONT ==================== -->
+  <main id="view-store" class="flex-1">
+    
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden border-b border-[#E7DFD3] dark:border-[#332E29] oman-pattern">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          <!-- Hero Text -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-oman-terracotta/10 dark:bg-oman-brass/15 border border-oman-terracotta/25 dark:border-oman-brass/30 text-oman-terracotta dark:text-oman-brassLight text-xs sm:text-sm font-bold">
+              <span>🇴🇲</span>
+              <span data-i18n="heroBadge">منصة الإبداع الحِرفي والرقمي في سلطنة عُمان</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight" data-i18n="heroTitle">
+              أصالة المشغولات اليدوية العُمانية وجمال التصاميم الرقمية في مكان واحد
+            </h1>
+
+            <p class="text-base sm:text-lg text-stone-600 dark:text-stone-300 max-w-2xl leading-relaxed" data-i18n="heroSubtitle">
+              اقتنِ قطعاً فخارية وجلدية وسعفية صُنعت بأيادٍ عُمانية مع توصيل محلي لجميع المحافظات، أو حمّل فوراً تصاميم الصور عالية الدقة ومقاطع الفيديو الاحترافية لمشاريعك.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a href="#catalog-section" onclick="setCategoryFilter('handmade')" class="px-6 py-3.5 rounded-xl bg-oman-terracotta hover:bg-oman-terracottaDark text-white font-bold text-sm sm:text-base shadow-lg shadow-oman-terracotta/20 transition-all flex items-center gap-2">
+                <span data-i18n="heroCtaCrafts">تصفح المشغولات اليدوية</span>
+                <span class="rtl:rotate-180">→</span>
+              </a>
+              <a href="#catalog-section" onclick="setCategoryFilter('digital')" class="px-6 py-3.5 rounded-xl bg-white dark:bg-[#1F1C19] hover:border-oman-brass border border-[#E7DFD3] dark:border-[#332E29] font-bold text-sm sm:text-base transition-all flex items-center gap-2">
+                <svg class="w-5 h-5 text-oman-brass" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                <span data-i18n="heroCtaDigital">التصاميم الرقمية (فيديو وصور)</span>
+              </a>
+            </div>
+
+            <!-- Trust Pillars -->
+            <div class="grid grid-cols-3 gap-4 pt-4 border-t border-[#E7DFD3] dark:border-[#332E29]">
+              <div>
+                <div class="font-extrabold text-lg sm:text-xl text-oman-terracotta dark:text-oman-brassLight" data-i18n="stat1Title">100% عُماني</div>
+                <div class="text-xs text-stone-500 dark:text-stone-400" data-i18n="stat1Desc">دعم مباشر للحرفيين والمصممين</div>
+              </div>
+              <div>
+                <div class="font-extrabold text-lg sm:text-xl text-oman-terracotta dark:text-oman-brassLight" data-i18n="stat2Title">11 محافظة</div>
+                <div class="text-xs text-stone-500 dark:text-stone-400" data-i18n="stat2Desc">شحن محلي سريع وموثوق</div>
+              </div>
+              <div>
+                <div class="font-extrabold text-lg sm:text-xl text-oman-terracotta dark:text-oman-brassLight" data-i18n="stat3Title">تسليم فوري</div>
+                <div class="text-xs text-stone-500 dark:text-stone-400" data-i18n="stat3Desc">روابط تحميل 4K/8K بعد الدفع</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Visual Showcase Card -->
+          <div class="lg:col-span-5">
+            <div class="relative rounded-3xl bg-white dark:bg-[#1F1C19] p-5 sm:p-6 border border-[#E7DFD3] dark:border-[#332E29] shadow-xl animate-float">
+              <div class="grid grid-cols-2 gap-3.5">
+                <!-- Physical Card Preview -->
+                <div class="rounded-2xl bg-[#F6F1EA] dark:bg-[#2A2521] p-4 flex flex-col justify-between border border-oman-terracotta/20">
+                  <div class="w-full h-28 rounded-xl bg-gradient-to-br from-oman-terracotta/20 to-oman-brass/20 flex items-center justify-center mb-3">
+                    <!-- Bahla Pottery SVG -->
+                    <svg class="w-16 h-16 text-oman-terracotta" viewBox="0 0 64 64" fill="none">
+                      <path d="M22 14h20l-3 8c6 4 9 11 9 19 0 8-6 13-16 13s-16-5-16-13c0-8 3-15 9-19l-3-8z" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="2.5"/>
+                      <path d="M18 34h28M20 42h24" stroke="#C59B38" stroke-width="2" stroke-dasharray="3 3"/>
+                      <path d="M28 10c0-3 2-5 4-5s4 2 4 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-oman-terracotta/15 text-oman-terracotta" data-i18n="badgePhysicalShort">شحن محلي</span>
+                    <h3 class="font-bold text-sm mt-1.5" data-i18n="heroCard1">فخار بهلاء اليدوي</h3>
+                    <p class="text-xs font-extrabold text-oman-terracotta mt-0.5 tabular-nums">14.500 ر.ع.</p>
+                  </div>
+                </div>
+
+                <!-- Digital Video Card Preview -->
+                <div class="rounded-2xl bg-[#1C1917] text-white p-4 flex flex-col justify-between border border-oman-brass/30">
+                  <div class="relative w-full h-28 rounded-xl bg-gradient-to-tr from-oman-frankincense/40 via-stone-800 to-oman-brass/30 flex items-center justify-center mb-3 overflow-hidden">
+                    <div class="w-10 h-10 rounded-full bg-oman-brass text-stone-950 flex items-center justify-center shadow-lg">
+                      <svg class="w-5 h-5 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <span class="absolute bottom-1.5 right-1.5 text-[9px] font-mono bg-black/70 px-1.5 py-0.5 rounded text-oman-brassLight">4K RAW</span>
+                  </div>
+                  <div>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-oman-brass/20 text-oman-brassLight" data-i18n="badgeDigitalShort">تحميل فوري</span>
+                    <h3 class="font-bold text-sm mt-1.5" data-i18n="heroCard2">موشن جرافيك عُماني</h3>
+                    <p class="text-xs font-extrabold text-oman-brassLight mt-0.5 tabular-nums">15.000 ر.ع.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3.5 border-t border-[#E7DFD3] dark:border-[#332E29] flex items-center justify-between text-xs text-stone-500 dark:text-stone-400">
+                <span data-i18n="heroPaymentNote">يدعم الدفع بالبطاقة أو الدفع عند الاستلام</span>
+                <span class="font-bold text-oman-frankincense dark:text-emerald-400">● OMR</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Catalog & Filters Section -->
+    <section id="catalog-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+      
+      <!-- Filter & Search Bar -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-[#E7DFD3] dark:border-[#332E29]">
+        
+        <!-- Category Pills -->
+        <div class="flex flex-wrap items-center gap-2" role="tablist">
+          <button onclick="setCategoryFilter('all')" data-cat="all" class="cat-pill px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-oman-terracotta text-white shadow-sm" data-i18n="catAll">الكل (8)</button>
+          <button onclick="setCategoryFilter('handmade')" data-cat="handmade" class="cat-pill px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] hover:border-oman-terracotta" data-i18n="catHandmade">🏺 مشغولات يدوية</button>
+          <button onclick="setCategoryFilter('photo')" data-cat="photo" class="cat-pill px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] hover:border-oman-terracotta" data-i18n="catPhoto">🖼️ تصاميم صور</button>
+          <button onclick="setCategoryFilter('video')" data-cat="video" class="cat-pill px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] hover:border-oman-terracotta" data-i18n="catVideo">🎬 تصاميم فيديو</button>
+        </div>
+
+        <!-- Search & Sort Controls -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+          <div class="relative flex-1 sm:w-64">
+            <input type="text" id="search-input" oninput="renderCatalog()" placeholder="ابحث عن فخار، سعف، 4K..." class="w-full ps-9 pe-4 py-2.5 rounded-xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] text-sm focus:outline-none focus:border-oman-terracotta" />
+            <svg class="w-4 h-4 text-stone-400 absolute top-3 start-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+
+          <select id="sort-select" onchange="renderCatalog()" class="px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] text-sm font-semibold focus:outline-none focus:border-oman-terracotta">
+            <option value="featured" data-i18n="sortFeatured">الترتيب: المميزة</option>
+            <option value="price-asc" data-i18n="sortPriceAsc">السعر: الأقل للأعلى</option>
+            <option value="price-desc" data-i18n="sortPriceDesc">السعر: الأعلى للأقل</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Product Grid -->
+      <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-8">
+        <!-- Rendered dynamically by JS -->
+      </div>
+
+      <!-- Empty Search State -->
+      <div id="empty-catalog" class="hidden text-center py-16">
+        <div class="text-4xl mb-3">🔍</div>
+        <h3 class="font-bold text-lg" data-i18n="noResultsTitle">لا توجد منتجات مطابقة لبحثك</h3>
+        <p class="text-sm text-stone-500 mt-1" data-i18n="noResultsDesc">جرب تغيير كلمات البحث أو اختيار تصنيف آخر.</p>
+        <button onclick="resetFilters()" class="mt-4 px-5 py-2 rounded-xl bg-oman-terracotta text-white text-sm font-bold" data-i18n="resetFilters">عرض جميع المنتجات</button>
+      </div>
+    </section>
+
+    <!-- Local Shipping & Digital Fulfillment Banner -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="rounded-3xl p-6 sm:p-8 bg-[#F6F1EA] dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-oman-terracotta/15 text-oman-terracotta flex items-center justify-center shrink-0 text-2xl">🚚</div>
+          <div>
+            <h3 class="font-extrabold text-lg" data-i18n="bannerShipTitle">شحن محلي مخصص للمشغولات اليدوية</h3>
+            <p class="text-sm text-stone-600 dark:text-stone-300 mt-1 leading-relaxed" data-i18n="bannerShipDesc">نغلف كل قطعة يدوية بعناية فائقة ونوصلها لباب منزلك في مسقط، ظفار، الداخلية، الباطنة، وجميع محافظات السلطنة خلال 2-4 أيام عمل.</p>
+          </div>
+        </div>
+        <div class="rounded-3xl p-6 sm:p-8 bg-[#1C1917] text-white border border-oman-brass/30 flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-oman-brass/20 text-oman-brassLight flex items-center justify-center shrink-0 text-2xl">⚡</div>
+          <div>
+            <h3 class="font-extrabold text-lg text-oman-brassLight" data-i18n="bannerDigTitle">تسليم رقمي فوري للتصاميم والفيديو</h3>
+            <p class="text-sm text-stone-300 mt-1 leading-relaxed" data-i18n="bannerDigDesc">بمجرد إتمام الدفع الإلكتروني، تُفتح لك روابط تحميل الملفات الأصلية بدون علامة مائية مباشرة في صفحة «طلباتي وتحميلاتي» مع ترخيص استخدام واضح.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== VIEW 2: CUSTOMER ORDERS & DOWNLOADS ==================== -->
+  <main id="view-orders" class="hidden flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E7DFD3] dark:border-[#332E29]">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold" data-i18n="ordersPageTitle">طلباتي وتحميلاتي الرقمية</h1>
+        <p class="text-sm text-stone-500 dark:text-stone-400 mt-1" data-i18n="ordersPageSub">تتبع شحنات المشغولات اليدوية وحمّل ملفاتك الرقمية المشتراة في أي وقت.</p>
+      </div>
+      <button onclick="switchView('store')" class="px-4 py-2.5 rounded-xl bg-oman-terracotta text-white text-sm font-bold self-start" data-i18n="continueShopping">متابعة التسوق</button>
+    </div>
+
+    <div id="orders-list" class="space-y-6 mt-8">
+      <!-- Rendered dynamically by JS -->
+    </div>
+  </main>
+
+  <!-- ==================== VIEW 3: MERCHANT ADMIN DASHBOARD ==================== -->
+  <main id="view-admin" class="hidden flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    
+    <!-- Admin Header -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#E7DFD3] dark:border-[#332E29]">
+      <div>
+        <div class="inline-flex items-center gap-2 text-xs font-bold px-2.5 py-1 rounded-full bg-oman-brass/15 text-oman-terracotta dark:text-oman-brassLight mb-2">
+          <span>●</span>
+          <span data-i18n="adminRoleBadge">وضع التاجر / مدير المتجر</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold" data-i18n="adminTitle">لوحة تحكم «صُنع في عُمان»</h1>
+      </div>
+      <button onclick="openAddProductModal()" class="px-5 py-3 rounded-xl bg-oman-terracotta hover:bg-oman-terracottaDark text-white font-bold text-sm shadow-md flex items-center gap-2 self-start">
+        <span>+</span>
+        <span data-i18n="addProductBtn">إضافة منتج جديد (يدوي أو رقمي)</span>
+      </button>
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+      <div class="p-5 rounded-2xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29]">
+        <div class="text-xs font-semibold text-stone-500" data-i18n="kpiRevenue">إجمالي المبيعات (OMR)</div>
+        <div id="kpi-revenue" class="text-2xl font-extrabold text-oman-terracotta dark:text-oman-brassLight mt-2 tabular-nums">0.000 ر.ع.</div>
+        <div class="text-[11px] text-emerald-600 mt-1" data-i18n="kpiRevenueSub">شامل الطلبات المكتملة وقيد التجهيز</div>
+      </div>
+      <div class="p-5 rounded-2xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29]">
+        <div class="text-xs font-semibold text-stone-500" data-i18n="kpiOrders">عدد الطلبات الكلي</div>
+        <div id="kpi-orders" class="text-2xl font-extrabold mt-2 tabular-nums">0</div>
+        <div id="kpi-split" class="text-[11px] text-stone-500 mt-1">0 ملموس • 0 رقمي</div>
+      </div>
+      <div class="p-5 rounded-2xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29]">
+        <div class="text-xs font-semibold text-stone-500" data-i18n="kpiProducts">المنتجات النشطة</div>
+        <div id="kpi-products" class="text-2xl font-extrabold mt-2 tabular-nums">8</div>
+        <div class="text-[11px] text-stone-500 mt-1" data-i18n="kpiProductsSub">مشغولات يدوية وتصاميم 4K/8K</div>
+      </div>
+      <div class="p-5 rounded-2xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29]">
+        <div class="text-xs font-semibold text-stone-500" data-i18n="kpiLowStock">تنبيهات المخزون المنخفض</div>
+        <div id="kpi-lowstock" class="text-2xl font-extrabold text-amber-600 mt-2 tabular-nums">0</div>
+        <div class="text-[11px] text-stone-500 mt-1" data-i18n="kpiLowStockSub">قطع يدوية أقل من 4 وحدات</div>
+      </div>
+    </div>
+
+    <!-- AI Store Advisor Insight Panel -->
+    <div class="mt-6 p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-[#F6F1EA] to-white dark:from-[#26211D] dark:to-[#1F1C19] border border-oman-brass/40 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div class="flex items-start gap-3.5">
+        <div class="w-10 h-10 rounded-xl bg-oman-brass text-white flex items-center justify-center shrink-0 font-bold">AI</div>
+        <div>
+          <h3 class="font-bold text-sm sm:text-base text-oman-terracotta dark:text-oman-brassLight" data-i18n="aiAdvisorTitle">المستشار الذكي للمتجر (تحليل الأداء والمخزون)</h3>
+          <p id="ai-advisor-text" class="text-xs sm:text-sm text-stone-600 dark:text-stone-300 mt-1 leading-relaxed">جاري تحليل مبيعات المشغولات اليدوية والتصاميم الرقمية...</p>
+        </div>
+      </div>
+      <button onclick="refreshAiInsight()" class="px-4 py-2 rounded-xl border border-oman-brass text-xs font-bold hover:bg-oman-brass hover:text-white transition-colors shrink-0" data-i18n="aiRefreshBtn">تحديث التوصية</button>
+    </div>
+
+    <!-- Admin Tabs: Orders vs Catalog -->
+    <div class="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- Orders Management (7 cols) -->
+      <div class="lg:col-span-7 space-y-4">
+        <h2 class="font-extrabold text-lg" data-i18n="adminOrdersTitle">إدارة الطلبات والشحن المحلي</h2>
+        <div id="admin-orders-list" class="space-y-3">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- Inventory & Digital Assets Management (5 cols) -->
+      <div class="lg:col-span-5 space-y-4">
+        <h2 class="font-extrabold text-lg" data-i18n="adminInventoryTitle">إدارة المنتجات والمخزون</h2>
+        <div id="admin-products-list" class="space-y-3">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="border-t border-[#E7DFD3] dark:border-[#332E29] bg-[#F6F1EA] dark:bg-[#191614] mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <div class="font-extrabold text-lg text-oman-terracotta dark:text-oman-brassLight" data-i18n="brandName">صُنع في عُمان</div>
+          <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 mt-2 leading-relaxed" data-i18n="footerAbout">
+            منصة عُمانية متخصصة في تمكين الحرفيين والمصممين الرقميين لعرض وبيع إبداعاتهم بالريال العُماني مع شحن محلي موثوق وتسليم رقمي فوري.
+          </p>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm mb-3" data-i18n="footerLinksTitle">روابط مهمة</h4>
+          <ul class="space-y-2 text-xs sm:text-sm text-stone-600 dark:text-stone-400">
+            <li><button onclick="openPolicyModal('shipping')" class="hover:text-oman-terracotta" data-i18n="localShippingPolicy">سياسة الشحن المحلي داخل السلطنة</button></li>
+            <li><button onclick="openPolicyModal('returns')" class="hover:text-oman-terracotta" data-i18n="returnsPolicy">سياسة الاسترجاع وتراخيص التصاميم</button></li>
+            <li><button onclick="openPolicyModal('contact')" class="hover:text-oman-terracotta" data-i18n="contactUs">تواصل مع فريق الدعم (مسقط)</button></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm mb-3" data-i18n="footerPayTitle">طرق الدفع المعتمدة في عُمان</h4>
+          <div class="flex flex-wrap gap-2 text-xs font-bold">
+            <span class="px-3 py-1.5 rounded-lg bg-white dark:bg-[#26221E] border border-[#E7DFD3] dark:border-[#332E29]">OmanNet / بطاقات الخصم</span>
+            <span class="px-3 py-1.5 rounded-lg bg-white dark:bg-[#26221E] border border-[#E7DFD3] dark:border-[#332E29]">Thawani Pay</span>
+            <span class="px-3 py-1.5 rounded-lg bg-white dark:bg-[#26221E] border border-[#E7DFD3] dark:border-[#332E29]">VISA / Mastercard</span>
+            <span class="px-3 py-1.5 rounded-lg bg-white dark:bg-[#26221E] border border-[#E7DFD3] dark:border-[#332E29]" data-i18n="codBadge">الدفع عند الاستلام</span>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 pt-6 border-t border-[#E7DFD3] dark:border-[#332E29] flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-2">
+        <span>© 2026 صُنع في عُمان | Made in Oman. جميع الحقوق محفوظة.</span>
+        <span>مسقط، سلطنة عُمان 🇴🇲</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODAL 1: PRODUCT DETAIL & PREVIEW ==================== -->
+  <div id="product-modal" class="hidden fixed inset-0 z-50 bg-black/65 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white dark:bg-[#1F1C19] rounded-3xl max-w-3xl w-full border border-[#E7DFD3] dark:border-[#332E29] shadow-2xl overflow-hidden my-auto">
+      <div id="product-modal-content">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== DRAWER 2: HYBRID SMART CART & CHECKOUT ==================== -->
+  <div id="cart-drawer" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex justify-end">
+    <div class="bg-[#FAF7F2] dark:bg-[#181512] w-full max-w-lg h-full flex flex-col border-s border-[#E7DFD3] dark:border-[#332E29] shadow-2xl">
+      
+      <!-- Cart Header -->
+      <div class="p-5 border-b border-[#E7DFD3] dark:border-[#332E29] flex items-center justify-between bg-white dark:bg-[#1F1C19]">
+        <div>
+          <h2 class="font-extrabold text-lg" data-i18n="cartDrawerTitle">سلة المشتريات وإتمام الطلب</h2>
+          <p id="cart-type-indicator" class="text-xs text-stone-500 mt-0.5"></p>
+        </div>
+        <button onclick="toggleCartDrawer()" class="p-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-500">✕</button>
+      </div>
+
+      <!-- Cart Body (Items + Smart Checkout Form) -->
+      <div class="flex-1 overflow-y-auto p-5 space-y-6">
+        <div id="cart-items-container" class="space-y-3">
+          <!-- Cart items rendered here -->
+        </div>
+
+        <!-- Checkout Section (Shown when cart has items) -->
+        <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)" class="hidden space-y-5 pt-4 border-t border-[#E7DFD3] dark:border-[#332E29]">
+          
+          <!-- Customer Info -->
+          <div class="space-y-3">
+            <h3 class="font-bold text-sm text-oman-terracotta dark:text-oman-brassLight" data-i18n="checkoutCustomerTitle">1. بيانات المستلم</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-semibold mb-1" data-i18n="labelFullName">الاسم الكامل *</label>
+                <input type="text" id="cust-name" required value="سالم بن سعيد الحارثي" class="w-full px-3 py-2 rounded-xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold mb-1" data-i18n="labelPhone">رقم الهاتف العُماني (+968) *</label>
+                <input type="tel" id="cust-phone" required value="968 9123 4567" class="w-full px-3 py-2 rounded-xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] text-sm tabular-nums" dir="ltr" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold mb-1" data-i18n="labelEmail">البريد الإلكتروني (لإرسال روابط التحميل والفاتورة) *</label>
+              <input type="email" id="cust-email" required value="salim.oman@example.om" class="w-full px-3 py-2 rounded-xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] text-sm" dir="ltr" />
+            </div>
+          </div>
+
+          <!-- Conditional Local Oman Shipping Section (ONLY shown if physical items exist) -->
+          <div id="shipping-fields-section" class="space-y-3 p-4 rounded-2xl bg-[#F6F1EA] dark:bg-[#231F1C] border border-oman-terracotta/25">
+            <div class="flex items-center justify-between">
+              <h3 class="font-bold text-sm text-oman-terracotta dark:text-oman-brassLight" data-i18n="checkoutShipTitle">2. عنوان الشحن المحلي (سلطنة عُمان)</h3>
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-oman-terracotta/15 text-oman-terracotta" data-i18n="localOnlyTag">توصيل محلي</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-semibold mb-1" data-i18n="labelGovernorate">المحافظة *</label>
+                <select id="ship-gov" onchange="updateCartTotals()" class="w-full px-3 py-2 rounded-xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] text-sm">
+                  <option value="مسقط | Muscat">مسقط (Muscat)</option>
+                  <option value="ظفار | Dhofar">ظفار (Dhofar)</option>
+                  <option value="الداخلية | Ad Dakhiliyah">الداخلية (Ad Dakhiliyah)</option>
+                  <option value="شمال الباطنة | North Al Batinah">شمال الباطنة (North Al Batinah)</option>
+                  <option value="جنوب الباطنة | South Al Batinah">جنوب الباطنة (South Al Batinah)</option>
+                  <option value="جنوب الشرقية | South Ash Sharqiyah">جنوب الشرقية (South Ash Sharqiyah)</option>
+                  <option value="شمال الشرقية | North Ash Sharqiyah">شمال الشرقية (North Ash Sharqiyah)</option>
+                  <option value="الظاهرة | Ad Dhahirah">الظاهرة (Ad Dhahirah)</option>
+                  <option value="البريمي | Al Buraimi">البريمي (Al Buraimi)</option>
+                  <option value="مسندم | Musandam">مسندم (Musandam)</option>
+                  <option value="الوسطى | Al Wusta">الوسطى (Al Wusta)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold mb-1" data-i18n="labelWilayat">الولاية / المنطقة *</label>
+                <input type="text" id="ship-wilayat" value="السيب - الخوض" class="w-full px-3 py-2 rounded-xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] text-sm" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold mb-1" data-i18n="labelAddress">تفاصيل العنوان (الشارع / رقم المنزل / معلم قريب)</label>
+              <input type="text" id="ship-address" value="شارع الجامعة، بناية 14" class="w-full px-3 py-2 rounded-xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] text-sm" />
+            </div>
+          </div>
+
+          <!-- Digital Only Notice (Shown when NO physical items exist) -->
+          <div id="digital-only-notice" class="hidden p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-800 dark:text-emerald-300 flex items-center gap-2.5">
+            <span class="text-lg">⚡</span>
+            <span data-i18n="digitalNoShipMsg">سلتك تحتوي على تصاميم رقمية فقط — لا حاجة لعنوان شحن! ستُفتح روابط التحميل فور إتمام الدفع.</span>
+          </div>
+
+          <!-- Payment Method -->
+          <div class="space-y-2.5">
+            <h3 class="font-bold text-sm text-oman-terracotta dark:text-oman-brassLight" data-i18n="checkoutPayTitle">3. طريقة الدفع (OMR)</h3>
+            <label class="flex items-center justify-between p-3 rounded-xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] cursor-pointer">
+              <div class="flex items-center gap-2.5">
+                <input type="radio" name="payMethod" value="card" checked class="accent-oman-terracotta" />
+                <span class="text-sm font-semibold" data-i18n="payCard">بطاقة خصم عُمانية (OmanNet) / فيزا / ماستركارد</span>
+              </div>
+              <span class="text-xs font-mono text-oman-brass">Thawani</span>
+            </label>
+            <label id="cod-option-label" class="flex items-center justify-between p-3 rounded-xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] cursor-pointer">
+              <div class="flex items-center gap-2.5">
+                <input type="radio" name="payMethod" value="cod" class="accent-oman-terracotta" />
+                <span class="text-sm font-semibold" data-i18n="payCod">الدفع عند الاستلام (للمشغولات اليدوية)</span>
+              </div>
+              <span class="text-xs text-stone-400">COD</span>
+            </label>
+          </div>
+
+          <!-- Order Summary Totals -->
+          <div class="p-4 rounded-2xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] space-y-2 text-sm">
+            <div class="flex justify-between text-stone-500">
+              <span data-i18n="subtotalLabel">المجموع الفرعي</span>
+              <span id="summary-subtotal" class="font-bold tabular-nums">0.000 ر.ع.</span>
+            </div>
+            <div class="flex justify-between text-stone-500">
+              <span data-i18n="shippingLabel">رسوم الشحن المحلي</span>
+              <span id="summary-shipping" class="font-bold tabular-nums">0.000 ر.ع.</span>
+            </div>
+            <div class="pt-2 border-t border-[#E7DFD3] dark:border-[#332E29] flex justify-between font-extrabold text-base">
+              <span data-i18n="totalLabel">الإجمالي المستحق</span>
+              <span id="summary-total" class="text-oman-terracotta dark:text-oman-brassLight tabular-nums">0.000 ر.ع.</span>
+            </div>
+          </div>
+
+          <button type="submit" id="place-order-btn" class="w-full py-3.5 rounded-xl bg-oman-terracotta hover:bg-oman-terracottaDark text-white font-extrabold text-sm sm:text-base shadow-lg transition-all" data-i18n="confirmOrderBtn">
+            تأكيد الطلب والدفع الآن
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== DRAWER 3: WISHLIST ==================== -->
+  <div id="wishlist-drawer" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex justify-end">
+    <div class="bg-[#FAF7F2] dark:bg-[#181512] w-full max-w-md h-full flex flex-col border-s border-[#E7DFD3] dark:border-[#332E29] shadow-2xl">
+      <div class="p-5 border-b border-[#E7DFD3] dark:border-[#332E29] flex items-center justify-between bg-white dark:bg-[#1F1C19]">
+        <h2 class="font-extrabold text-lg" data-i18n="wishlistTitle">قائمة المفضلة</h2>
+        <button onclick="toggleWishlistDrawer()" class="p-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-500">✕</button>
+      </div>
+      <div id="wishlist-items-container" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL 4: ADD PRODUCT (ADMIN) ==================== -->
+  <div id="add-product-modal" class="hidden fixed inset-0 z-50 bg-black/65 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white dark:bg-[#1F1C19] rounded-3xl max-w-lg w-full p-6 border border-[#E7DFD3] dark:border-[#332E29] shadow-2xl my-auto">
+      <div class="flex items-center justify-between pb-4 border-b border-[#E7DFD3] dark:border-[#332E29]">
+        <h3 class="font-extrabold text-lg" data-i18n="addModalTitle">إضافة منتج جديد للمتجر</h3>
+        <button onclick="closeAddProductModal()" class="text-stone-400 hover:text-stone-600">✕</button>
+      </div>
+      <form onsubmit="handleAddProduct(event)" class="space-y-4 mt-4">
+        <div>
+          <label class="block text-xs font-bold mb-1" data-i18n="newProdType">نوع المنتج</label>
+          <select id="new-prod-type" onchange="toggleNewProductFields()" class="w-full px-3 py-2.5 rounded-xl bg-[#FAF7F2] dark:bg-[#141210] border border-[#E7DFD3] dark:border-[#332E29] text-sm">
+            <option value="handmade">مشغول يدوي (منتج ملموس - شحن محلي)</option>
+            <option value="photo">تصميم صورة رقمية (تحميل فوري)</option>
+            <option value="video">تصميم فيديو رقمي (تحميل فوري)</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold mb-1">اسم المنتج (عربي) *</label>
+            <input type="text" id="new-title-ar" required placeholder="مثال: خنجر عُماني مصغر للزينة" class="w-full px-3 py-2 rounded-xl bg-[#FAF7F2] dark:bg-[#141210] border border-[#E7DFD3] dark:border-[#332E29] text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold mb-1">Product Title (English) *</label>
+            <input type="text" id="new-title-en" required placeholder="e.g. Miniature Omani Khanjar" class="w-full px-3 py-2 rounded-xl bg-[#FAF7F2] dark:bg-[#141210] border border-[#E7DFD3] dark:border-[#332E29] text-sm" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold mb-1">السعر بالريال العُماني (OMR) *</label>
+            <input type="number" step="0.050" min="0.500" id="new-price" required placeholder="12.500" class="w-full px-3 py-2 rounded-xl bg-[#FAF7F2] dark:bg-[#141210] border border-[#E7DFD3] dark:border-[#332E29] text-sm tabular-nums" />
+          </div>
+          <div id="new-stock-wrap">
+            <label class="block text-xs font-bold mb-1">الكمية المتوفرة بالمخزون *</label>
+            <input type="number" min="1" id="new-stock" value="5" class="w-full px-3 py-2 rounded-xl bg-[#FAF7F2] dark:bg-[#141210] border border-[#E7DFD3] dark:border-[#332E29] text-sm tabular-nums" />
+          </div>
+          <div id="new-spec-wrap" class="hidden">
+            <label class="block text-xs font-bold mb-1">صيغة ودقة الملف *</label>
+            <input type="text" id="new-spec" value="4K ProRes / 300 DPI" class="w-full px-3 py-2 rounded-xl bg-[#FAF7F2] dark:bg-[#141210] border border-[#E7DFD3] dark:border-[#332E29] text-sm" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold mb-1">وصف المنتج (عربي)</label>
+          <textarea id="new-desc-ar" rows="2" required placeholder="وصف مختصر يبرز جودة الصنع أو مواصفات التصميم..." class="w-full px-3 py-2 rounded-xl bg-[#FAF7F2] dark:bg-[#141210] border border-[#E7DFD3] dark:border-[#332E29] text-sm"></textarea>
+        </div>
+        <div class="flex justify-end gap-2 pt-2">
+          <button type="button" onclick="closeAddProductModal()" class="px-4 py-2.5 rounded-xl border border-[#E7DFD3] dark:border-[#332E29] text-sm font-bold">إلغاء</button>
+          <button type="submit" class="px-5 py-2.5 rounded-xl bg-oman-terracotta text-white text-sm font-bold">نشر المنتج</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL 5: POLICY & CONTACT ==================== -->
+  <div id="policy-modal" class="hidden fixed inset-0 z-50 bg-black/65 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#1F1C19] rounded-3xl max-w-lg w-full p-6 border border-[#E7DFD3] dark:border-[#332E29] shadow-2xl">
+      <div class="flex items-center justify-between pb-3 border-b border-[#E7DFD3] dark:border-[#332E29]">
+        <h3 id="policy-modal-title" class="font-extrabold text-lg"></h3>
+        <button onclick="closePolicyModal()" class="text-stone-400 hover:text-stone-600">✕</button>
+      </div>
+      <div id="policy-modal-body" class="py-4 text-sm text-stone-600 dark:text-stone-300 space-y-3 leading-relaxed"></div>
+      <div class="pt-3 border-t border-[#E7DFD3] dark:border-[#332E29] text-end">
+        <button onclick="closePolicyModal()" class="px-5 py-2 rounded-xl bg-oman-terracotta text-white text-sm font-bold" data-i18n="closeBtn">إغلاق</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ==================== STATE & SEED DATA ====================
+    let currentLang = 'ar';
+    let currentCategory = 'all';
+    let wishlist = [];
+    let cart = [];
+
+    // Seed Catalog: 8 Authentic Omani Handmade & Digital Products
+    let products = [
+      {
+        id: 'OM-101',
+        type: 'handmade', // physical
+        categoryLabelAr: 'مشغول يدوي',
+        categoryLabelEn: 'Handmade Craft',
+        titleAr: 'مبخرة فخارية من بهلاء منقوشة يدوياً',
+        titleEn: 'Handmade Bahla Clay Incense Burner',
+        descAr: 'مبخرة تقليدية مصنوعة من طين بهلاء الطبيعي ومزخرفة يدوياً بنقوش هندسية عُمانية أصيلة، مثالية لللبان العُماني.',
+        descEn: 'Traditional incense burner crafted from natural Bahla clay with hand-carved Omani geometric motifs, ideal for Hojari frankincense.',
+        price: 14.500,
+        stock: 7,
+        specAr: 'ارتفاع 18 سم • طين طبيعي 100%',
+        specEn: 'Height 18 cm • 100% Natural Clay',
+        variantsAr: ['طيني طبيعي', 'معتق بالذهب'],
+        variantsEn: ['Natural Terracotta', 'Gold Accented'],
+        artisanAr: 'ورشة فخار بهلاء - الداخلية',
+        artisanEn: 'Bahla Pottery Workshop - Ad Dakhiliyah',
+        svgTheme: 'pottery'
+      },
+      {
+        id: 'OM-102',
+        type: 'video', // digital video
+        categoryLabelAr: 'تصميم فيديو 4K',
+        categoryLabelEn: '4K Video Design',
+        titleAr: 'موشن جرافيك: هوية عُمانية متحركة 4K',
+        titleEn: 'Omani Cultural Motion Graphics 4K Loop',
+        descAr: 'خلفية موشن جرافيك احترافية مستوحاة من الأقواس العُمانية والنقوش الذهبية بدقة 4K 60fps جاهزة للمونتاج والفعاليات الوطنية.',
+        descEn: 'Seamless 4K 60fps motion graphics loop inspired by Omani arches and brushed brass patterns, ready for broadcasts and events.',
+        price: 15.000,
+        stock: 999,
+        specAr: '4K UHD (3840×2160) • MP4 & ProRes • 15 ثانية',
+        specEn: '4K UHD (3840×2160) • MP4 & ProRes • 15s Loop',
+        variantsAr: ['ترخيص شخصي', 'ترخيص تجاري (+5 ر.ع.)'],
+        variantsEn: ['Personal License', 'Commercial License (+5 OMR)'],
+        artisanAr: 'استوديو مسقط الرقمي',
+        artisanEn: 'Muscat Digital Studio',
+        svgTheme: 'video-motion'
+      },
+      {
+        id: 'OM-103',
+        type: 'handmade',
+        categoryLabelAr: 'مشغول يدوي',
+        categoryLabelEn: 'Handmade Craft',
+        titleAr: 'سلة سعف النخيل العُمانية المنسوجة',
+        titleEn: 'Handwoven Omani Palm Frond Basket',
+        descAr: 'سلة تراثية منسوجة يدوياً من سعف النخيل الطبيعي المصبوغ بألوان نباتية دافئة، مناسبة للتقديم أو الديكور المنزلي.',
+        descEn: 'Artisanal basket handwoven from natural Omani palm fronds dyed with warm botanical pigments, ideal for serving or home decor.',
+        price: 9.000,
+        stock: 3, // Low stock trigger!
+        specAr: 'قطر 32 سم • سعف نخيل طبيعي',
+        specEn: 'Diameter 32 cm • Natural Palm Frond',
+        variantsAr: ['لون رملي وزعفراني', 'لون طبيعي سادة'],
+        variantsEn: ['Sand & Saffron', 'Natural Unbleached'],
+        artisanAr: 'حرفيات ولاية سمائل',
+        artisanEn: 'Samail Women Artisans',
+        svgTheme: 'basket'
+      },
+      {
+        id: 'OM-104',
+        type: 'photo', // digital image
+        categoryLabelAr: 'تصميم صور 8K',
+        categoryLabelEn: '8K Photo Pack',
+        titleAr: 'حزمة خلفيات معمارية لقلاع عُمان بدقة 8K',
+        titleEn: 'Oman Forts 8K Architectural Photo Pack',
+        descAr: 'مجموعة من 12 صورة معمارية فائقة الدقة لقلعة نزوى وحصن جبرين بإضاءة الساعة الذهبية، مثالية للتصاميم الإعلانية والطباعة.',
+        descEn: 'Curated pack of 12 ultra-high-resolution architectural photographs of Nizwa Fort and Jabreen Castle at golden hour.',
+        price: 6.500,
+        stock: 999,
+        specAr: '12 ملف RAW + JPEG • دقة 8K (300 DPI)',
+        specEn: '12 RAW + JPEG Files • 8K (300 DPI)',
+        variantsAr: ['ترخيص شخصي', 'ترخيص تجاري (+5 ر.ع.)'],
+        variantsEn: ['Personal License', 'Commercial License (+5 OMR)'],
+        artisanAr: 'عدسة عُمان الفوتوغرافية',
+        artisanEn: 'Oman Lens Photography',
+        svgTheme: 'photo-fort'
+      },
+      {
+        id: 'OM-105',
+        type: 'handmade',
+        categoryLabelAr: 'مشغول يدوي',
+        categoryLabelEn: 'Handmade Craft',
+        titleAr: 'حقيبة جلدية مطرزة بنقوش تراثية',
+        titleEn: 'Embroidered Heritage Leather Clutch',
+        descAr: 'حقيبة يد مصنوعة من الجلد الطبيعي الفاخر ومطرزة يدوياً بخيوط السيم الذهبية والفضية المستوحاة من الأزياء العُمانية.',
+        descEn: 'Genuine full-grain leather clutch hand-embroidered with traditional silver and gold thread motifs inspired by Omani heritage attire.',
+        price: 22.000,
+        stock: 5,
+        specAr: '26×16 سم • جلد طبيعي وتطريز يدوي',
+        specEn: '26×16 cm • Full-Grain Leather',
+        variantsAr: ['بني داكن وذهبي', 'أسود وفضي'],
+        variantsEn: ['Dark Brown & Gold', 'Obsidian & Silver'],
+        artisanAr: 'دار الحِرفة - مسقط',
+        artisanEn: 'Dar Al Hirfa - Muscat',
+        svgTheme: 'leather'
+      },
+      {
+        id: 'OM-106',
+        type: 'photo',
+        categoryLabelAr: 'تصميم جرافيك',
+        categoryLabelEn: 'Digital Print Art',
+        titleAr: 'لوحة خط عربي رقمية: عُمان المجد',
+        titleEn: 'Arabic Calligraphy Digital Print: Oman Al-Majd',
+        descAr: 'مخطوطة فنية بالخط الديواني الجلي مع زخارف ذهبية، متوفرة بصيغ فيكتور مفتوحة المصدر وملفات جاهزة للطباعة حتى مقاس A1.',
+        descEn: 'Original Diwani Jali calligraphy artwork with gold leaf textures, delivered in scalable vector AI/EPS and print-ready A1 PDF.',
+        price: 4.750,
+        stock: 999,
+        specAr: 'AI + EPS + PDF (A1 300 DPI)',
+        specEn: 'AI + EPS + PDF (A1 300 DPI)',
+        variantsAr: ['ترخيص شخصي', 'ترخيص تجاري (+5 ر.ع.)'],
+        variantsEn: ['Personal License', 'Commercial License (+5 OMR)'],
+        artisanAr: 'خطاطو عُمان',
+        artisanEn: 'Oman Calligraphers Collective',
+        svgTheme: 'calligraphy'
+      },
+      {
+        id: 'OM-107',
+        type: 'video',
+        categoryLabelAr: 'تصميم فيديو 4K',
+        categoryLabelEn: '4K Drone Footage',
+        titleAr: 'لقطات جوية سينمائية للجبل الأخضر 4K',
+        titleEn: 'Jabal Akhdar Cinematic Drone Footage 4K',
+        descAr: 'باقة من 5 لقطات جوية سينمائية للمدرجات الزراعية والضباب الصباحي في الجبل الأخضر بصيغة 10-bit Log جاهزة للتلوين.',
+        descEn: '5 cinematic aerial drone clips capturing the terraced orchards and morning mist of Jabal Akhdar in 10-bit Log color profile.',
+        price: 18.000,
+        stock: 999,
+        specAr: '5 مقاطع 4K 60fps • 10-Bit MP4',
+        specEn: '5 Clips 4K 60fps • 10-Bit MP4',
+        variantsAr: ['ترخيص شخصي', 'ترخيص تجاري (+5 ر.ع.)'],
+        variantsEn: ['Personal License', 'Commercial License (+5 OMR)'],
+        artisanAr: 'أفق عُمان للإنتاج المرئي',
+        artisanEn: 'Oman Horizon Visuals',
+        svgTheme: 'video-drone'
+      },
+      {
+        id: 'OM-108',
+        type: 'handmade',
+        categoryLabelAr: 'مشغول يدوي',
+        categoryLabelEn: 'Handmade Craft',
+        titleAr: 'طقم فناجين قهوة عُمانية مرسومة يدوياً',
+        titleEn: 'Hand-Painted Omani Qahwa Cups Set (6 Pcs)',
+        descAr: 'طقم مكون من 6 فناجين خزفية للقهوة العُمانية مرسومة يدوياً بزخارف اللبان والورد الجبلي ومطلية بطبقة حماية آمنة.',
+        descEn: 'Set of 6 ceramic Omani Qahwa cups hand-painted with frankincense and Jabal Akhdar rose motifs with food-safe glaze.',
+        price: 16.000,
+        stock: 2, // Low stock trigger!
+        specAr: '6 قطع • خزف مرسوم يدوياً',
+        specEn: '6 Pieces • Hand-Glazed Ceramic',
+        variantsAr: ['نقش الورد الجبلي', 'نقش النقوش الهندسية'],
+        variantsEn: ['Jabal Rose Motif', 'Geometric Brass Motif'],
+        artisanAr: 'خزف نزوى الفني',
+        artisanEn: 'Nizwa Art Ceramics',
+        svgTheme: 'qahwa'
+      }
+    ];
+
+    // Seed an initial sample order so customer can immediately test "My Orders & Downloads"
+    let orders = [
+      {
+        id: 'OMN-8492',
+        date: '2026-11-15',
+        customerName: 'سالم بن سعيد الحارثي',
+        governorate: 'مسقط | Muscat',
+        status: 'delivered', // processing, shipped, delivered
+        paymentMethod: 'card',
+        subtotal: 21.000,
+        shipping: 2.000,
+        total: 23.000,
+        hasPhysical: true,
+        hasDigital: true,
+        items: [
+          {
+            productId: 'OM-101',
+            titleAr: 'مبخرة فخارية من بهلاء منقوشة يدوياً',
+            titleEn: 'Handmade Bahla Clay Incense Burner',
+            type: 'handmade',
+            variant: 'طيني طبيعي',
+            qty: 1,
+            price: 14.500
+          },
+          {
+            productId: 'OM-104',
+            titleAr: 'حزمة خلفيات معمارية لقلاع عُمان بدقة 8K',
+            titleEn: 'Oman Forts 8K Architectural Photo Pack',
+            type: 'photo',
+            variant: 'ترخيص شخصي',
+            qty: 1,
+            price: 6.500,
+            spec: '12 ملف RAW + JPEG • 8K'
+          }
+        ]
+      }
+    ];
+
+    // ==================== CURRENCY & TRANSLATIONS ====================
+    function formatOMR(amount) {
+      const formatted = Number(amount).toFixed(3);
+      return currentLang === 'ar' ? `${formatted} ر.ع.` : `${formatted} OMR`;
+    }
+
+    const i18n = {
+      ar: {
+        brandName: 'صُنع في عُمان',
+        brandTagline: 'حِرف يدوية أصيلة وتصاميم رقمية',
+        topBanner: 'شحن محلي سريع لجميع محافظات سلطنة عُمان (مجاني للطلبات فوق 25.000 ر.ع.) • تسليم رقمي فوري للتصاميم',
+        localShippingPolicy: 'سياسة الشحن المحلي',
+        navStore: 'المتجر',
+        navOrders: 'طلباتي وتحميلاتي',
+        navAdmin: 'لوحة التاجر',
+        cartBtn: 'السلة',
+        heroBadge: 'منصة الإبداع الحِرفي والرقمي في سلطنة عُمان',
+        heroTitle: 'أصالة المشغولات اليدوية العُمانية وجمال التصاميم الرقمية في مكان واحد',
+        heroSubtitle: 'اقتنِ قطعاً فخارية وجلدية وسعفية صُنعت بأيادٍ عُمانية مع توصيل محلي لجميع المحافظات، أو حمّل فوراً تصاميم الصور عالية الدقة ومقاطع الفيديو الاحترافية لمشاريعك.',
+        heroCtaCrafts: 'تصفح المشغولات اليدوية',
+        heroCtaDigital: 'التصاميم الرقمية (فيديو وصور)',
+        stat1Title: '100% عُماني',
+        stat1Desc: 'دعم مباشر للحرفيين والمصممين',
+        stat2Title: '11 محافظة',
+        stat2Desc: 'شحن محلي سريع وموثوق',
+        stat3Title: 'تسليم فوري',
+        stat3Desc: 'روابط تحميل 4K/8K بعد الدفع',
+        badgePhysicalShort: 'شحن محلي',
+        badgeDigitalShort: 'تحميل فوري',
+        heroCard1: 'فخار بهلاء اليدوي',
+        heroCard2: 'موشن جرافيك عُماني',
+        heroPaymentNote: 'يدعم الدفع بالبطاقة أو الدفع عند الاستلام',
+        catAll: 'الكل',
+        catHandmade: '🏺 مشغولات يدوية',
+        catPhoto: '🖼️ تصاميم صور',
+        catVideo: '🎬 تصاميم فيديو',
+        sortFeatured: 'الترتيب: المميزة',
+        sortPriceAsc: 'السعر: الأقل للأعلى',
+        sortPriceDesc: 'السعر: الأعلى للأقل',
+        noResultsTitle: 'لا توجد منتجات مطابقة لبحثك',
+        noResultsDesc: 'جرب تغيير كلمات البحث أو اختيار تصنيف آخر.',
+        resetFilters: 'عرض جميع المنتجات',
+        bannerShipTitle: 'شحن محلي مخصص للمشغولات اليدوية',
+        bannerShipDesc: 'نغلف كل قطعة يدوية بعناية فائقة ونوصلها لباب منزلك في مسقط، ظفار، الداخلية، الباطنة، وجميع محافظات السلطنة خلال 2-4 أيام عمل.',
+        bannerDigTitle: 'تسليم رقمي فوري للتصاميم والفيديو',
+        bannerDigDesc: 'بمجرد إتمام الدفع الإلكتروني، تُفتح لك روابط تحميل الملفات الأصلية بدون علامة مائية مباشرة في صفحة «طلباتي وتحميلاتي» مع ترخيص استخدام واضح.',
+        ordersPageTitle: 'طلباتي وتحميلاتي الرقمية',
+        ordersPageSub: 'تتبع شحنات المشغولات اليدوية وحمّل ملفاتك الرقمية المشتراة في أي وقت.',
+        continueShopping: 'متابعة التسوق',
+        adminRoleBadge: 'وضع التاجر / مدير المتجر',
+        adminTitle: 'لوحة تحكم «صُنع في عُمان»',
+        addProductBtn: 'إضافة منتج جديد (يدوي أو رقمي)',
+        kpiRevenue: 'إجمالي المبيعات (OMR)',
+        kpiRevenueSub: 'شامل الطلبات المكتملة وقيد التجهيز',
+        kpiOrders: 'عدد الطلبات الكلي',
+        kpiProducts: 'المنتجات النشطة',
+        kpiProductsSub: 'مشغولات يدوية وتصاميم 4K/8K',
+        kpiLowStock: 'تنبيهات المخزون المنخفض',
+        kpiLowStockSub: 'قطع يدوية أقل من 4 وحدات',
+        aiAdvisorTitle: 'المستشار الذكي للمتجر (تحليل الأداء والمخزون)',
+        aiRefreshBtn: 'تحديث التوصية',
+        adminOrdersTitle: 'إدارة الطلبات والشحن المحلي',
+        adminInventoryTitle: 'إدارة المنتجات والمخزون',
+        footerAbout: 'منصة عُمانية متخصصة في تمكين الحرفيين والمصممين الرقميين لعرض وبيع إبداعاتهم بالريال العُماني مع شحن محلي موثوق وتسليم رقمي فوري.',
+        footerLinksTitle: 'روابط مهمة',
+        returnsPolicy: 'سياسة الاسترجاع وتراخيص التصاميم',
+        contactUs: 'تواصل مع فريق الدعم (مسقط)',
+        footerPayTitle: 'طرق الدفع المعتمدة في عُمان',
+        codBadge: 'الدفع عند الاستلام',
+        cartDrawerTitle: 'سلة المشتريات وإتمام الطلب',
+        checkoutCustomerTitle: '1. بيانات المستلم',
+        labelFullName: 'الاسم الكامل *',
+        labelPhone: 'رقم الهاتف العُماني (+968) *',
+        labelEmail: 'البريد الإلكتروني (لإرسال روابط التحميل والفاتورة) *',
+        checkoutShipTitle: '2. عنوان الشحن المحلي (سلطنة عُمان)',
+        localOnlyTag: 'توصيل محلي',
+        labelGovernorate: 'المحافظة *',
+        labelWilayat: 'الولاية / المنطقة *',
+        labelAddress: 'تفاصيل العنوان (الشارع / رقم المنزل / معلم قريب)',
+        digitalNoShipMsg: 'سلتك تحتوي على تصاميم رقمية فقط — لا حاجة لعنوان شحن! ستُفتح روابط التحميل فور إتمام الدفع.',
+        checkoutPayTitle: '3. طريقة الدفع (OMR)',
+        payCard: 'بطاقة خصم عُمانية (OmanNet) / فيزا / ماستركارد',
+        payCod: 'الدفع عند الاستلام (للمشغولات اليدوية)',
+        subtotalLabel: 'المجموع الفرعي',
+        shippingLabel: 'رسوم الشحن المحلي',
+        totalLabel: 'الإجمالي المستحق',
+        confirmOrderBtn: 'تأكيد الطلب والدفع الآن',
+        wishlistTitle: 'قائمة المفضلة',
+        closeBtn: 'إغلاق',
+        addToCart: 'أضف للسلة',
+        previewBtn: 'معاينة وتفاصيل',
+        inStock: 'متوفر بالمخزون',
+        instantDownload: 'تحميل فوري بعد الدفع'
+      },
+      en: {
+        brandName: 'Made in Oman',
+        brandTagline: 'Authentic Crafts & Digital Assets',
+        topBanner: 'Fast local shipping across all Sultanate of Oman Governorates (Free above 25.000 OMR) • Instant digital delivery',
+        localShippingPolicy: 'Local Shipping Policy',
+        navStore: 'Storefront',
+        navOrders: 'My Orders & Downloads',
+        navAdmin: 'Merchant Admin',
+        cartBtn: 'Cart',
+        heroBadge: 'Omani Craftsmanship & Digital Art Marketplace',
+        heroTitle: 'Authentic Omani Handmade Crafts & High-Res Digital Designs in One Place',
+        heroSubtitle: 'Collect pottery, palm-frond, and leather pieces handcrafted in Oman with local delivery, or instantly download 4K videos and 8K photography for your creative projects.',
+        heroCtaCrafts: 'Explore Handmade Crafts',
+        heroCtaDigital: 'Digital Designs (Photo & Video)',
+        stat1Title: '100% Omani',
+        stat1Desc: 'Direct support for local artisans',
+        stat2Title: '11 Governorates',
+        stat2Desc: 'Reliable local Oman shipping',
+        stat3Title: 'Instant Access',
+        stat3Desc: '4K/8K downloads unlocked on checkout',
+        badgePhysicalShort: 'Local Shipping',
+        badgeDigitalShort: 'Instant Download',
+        heroCard1: 'Bahla Handcrafted Pottery',
+        heroCard2: 'Omani Motion Graphics',
+        heroPaymentNote: 'Supports OmanNet Cards & Cash on Delivery',
+        catAll: 'All',
+        catHandmade: '🏺 Handmade Crafts',
+        catPhoto: '🖼️ Photo Designs',
+        catVideo: '🎬 Video Designs',
+        sortFeatured: 'Sort: Featured',
+        sortPriceAsc: 'Price: Low to High',
+        sortPriceDesc: 'Price: High to Low',
+        noResultsTitle: 'No matching products found',
+        noResultsDesc: 'Try adjusting your search keywords or selecting another category.',
+        resetFilters: 'Show All Products',
+        bannerShipTitle: 'Dedicated Local Shipping for Handmade Crafts',
+        bannerShipDesc: 'Every handcrafted item is carefully packaged and delivered to your doorstep in Muscat, Dhofar, Dakhiliyah, Batinah, and across Oman within 2–4 business days.',
+        bannerDigTitle: 'Instant Digital Fulfillment for Media Assets',
+        bannerDigDesc: 'Once payment is completed, watermark-free master files are immediately unlocked in "My Orders & Downloads" with clear licensing.',
+        ordersPageTitle: 'My Orders & Digital Downloads',
+        ordersPageSub: 'Track local shipments for handmade goods and download your purchased digital assets anytime.',
+        continueShopping: 'Continue Shopping',
+        adminRoleBadge: 'Merchant / Store Admin Mode',
+        adminTitle: 'Made in Oman — Merchant Portal',
+        addProductBtn: 'Add New Product (Craft or Digital)',
+        kpiRevenue: 'Total Revenue (OMR)',
+        kpiRevenueSub: 'Includes fulfilled & active orders',
+        kpiOrders: 'Total Orders',
+        kpiProducts: 'Active Catalog Items',
+        kpiProductsSub: 'Handmade crafts & 4K/8K digital assets',
+        kpiLowStock: 'Low Stock Alerts',
+        kpiLowStockSub: 'Handmade items below 4 units',
+        aiAdvisorTitle: 'Smart Store Advisor (Inventory & Revenue Insights)',
+        aiRefreshBtn: 'Refresh Insight',
+        adminOrdersTitle: 'Order & Local Shipping Management',
+        adminInventoryTitle: 'Catalog & Inventory Control',
+        footerAbout: 'An Omani marketplace empowering local artisans and digital creators to sell in Omani Rial (OMR) with reliable local shipping and instant digital delivery.',
+        footerLinksTitle: 'Helpful Links',
+        returnsPolicy: 'Returns & Digital Licensing Policy',
+        contactUs: 'Contact Support Team (Muscat)',
+        footerPayTitle: 'Accepted Payment Methods in Oman',
+        codBadge: 'Cash on Delivery',
+        cartDrawerTitle: 'Shopping Cart & Checkout',
+        checkoutCustomerTitle: '1. Customer Details',
+        labelFullName: 'Full Name *',
+        labelPhone: 'Omani Phone Number (+968) *',
+        labelEmail: 'Email Address (for download links & receipt) *',
+        checkoutShipTitle: '2. Local Oman Shipping Address',
+        localOnlyTag: 'Local Delivery',
+        labelGovernorate: 'Governorate *',
+        labelWilayat: 'Wilayat / Area *',
+        labelAddress: 'Street / House No. / Landmark',
+        digitalNoShipMsg: 'Your cart contains digital designs only — no shipping address needed! Download links unlock immediately after payment.',
+        checkoutPayTitle: '3. Payment Method (OMR)',
+        payCard: 'OmanNet Debit Card / Visa / Mastercard',
+        payCod: 'Cash on Delivery (Handmade items only)',
+        subtotalLabel: 'Subtotal',
+        shippingLabel: 'Local Oman Shipping',
+        totalLabel: 'Total Due',
+        confirmOrderBtn: 'Confirm Order & Pay Now',
+        wishlistTitle: 'My Wishlist',
+        closeBtn: 'Close',
+        addToCart: 'Add to Cart',
+        previewBtn: 'Preview & Details',
+        inStock: 'In Stock',
+        instantDownload: 'Instant Download'
+      }
+    };
+
+    // ==================== CUSTOM ARTWORK / PREVIEWS GENERATOR ====================
+    function renderProductArtwork(product, isLarge = false) {
+      const hClass = isLarge ? 'h-64 sm:h-80' : 'h-48';
+      const watermarkOverlay = product.type !== 'handmade' ? `
+        <div class="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden">
+          <div class="rotate-[-22deg] border border-white/35 bg-black/25 backdrop-blur-[1px] px-3 py-1 rounded text-[10px] sm:text-xs font-bold tracking-widest text-white/85 uppercase select-none">
+            PREVIEW • صُنع في عُمان
+          </div>
+        </div>
+      ` : '';
+
+      const visuals = {
+        pottery: `
+          <div class="relative w-full ${hClass} bg-gradient-to-br from-[#EFE4D6] via-[#E5D3BC] to-[#D4B895] dark:from-[#2E241D] dark:via-[#241C16] dark:to-[#1C1510] flex items-center justify-center overflow-hidden">
+            <svg class="w-28 h-28 sm:w-36 sm:h-36 text-oman-terracotta drop-shadow-md" viewBox="0 0 100 100" fill="none">
+              <ellipse cx="50" cy="84" rx="22" ry="5" fill="#1C1917" fill-opacity="0.15"/>
+              <path d="M34 22h32l-4 12c10 6 15 16 15 28 0 12-9 20-27 20s-27-8-27-20c0-12 5-22 15-28l-4-12z" fill="#B85D3B" stroke="#7C361D" stroke-width="2.5"/>
+              <path d="M26 52h48M28 63h44" stroke="#E3C36E" stroke-width="2.5" stroke-dasharray="4 4"/>
+              <path d="M40 22l5 6 5-6 5 6 5-6" stroke="#FAF7F2" stroke-width="2" stroke-linecap="round"/>
+              <path d="M45 14c0-4 3-7 5-7s5 3 5 7" stroke="#944528" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>`,
+        basket: `
+          <div class="relative w-full ${hClass} bg-gradient-to-br from-[#F3E9D2] via-[#E6D5B0] to-[#D5BC8A] dark:from-[#2C261B] dark:via-[#221D14] dark:to-[#19150E] flex items-center justify-center overflow-hidden">
+            <svg class="w-28 h-28 sm:w-36 sm:h-36 drop-shadow-md" viewBox="0 0 100 100" fill="none">
+              <path d="M20 42h60l-7 34c-1 5-6 8-12 8H39c-6 0-11-3-12-8l-7-34z" fill="#D9A75A" stroke="#8C6223" stroke-width="2.5"/>
+              <path d="M22 52h56M24 62h52M26 72h48" stroke="#9E472A" stroke-width="2.5" stroke-dasharray="6 4"/>
+              <path d="M36 42c0-10 6-18 14-18s14 8 14 18" stroke="#8C6223" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>`,
+        leather: `
+          <div class="relative w-full ${hClass} bg-gradient-to-br from-[#E6D7C8] via-[#D1B9A3] to-[#B89A7E] dark:from-[#2B2019] dark:via-[#211813] dark:to-[#17110D] flex items-center justify-center overflow-hidden">
+            <svg class="w-28 h-28 sm:w-36 sm:h-36 drop-shadow-md" viewBox="0 0 100 100" fill="none">
+              <rect x="16" y="30" width="68" height="44" rx="8" fill="#5C2E1B" stroke="#3A1B0E" stroke-width="2.5"/>
+              <path d="M16 36l34 22 34-22" fill="#733A22" stroke="#E3C36E" stroke-width="2"/>
+              <circle cx="50" cy="58" r="4" fill="#C59B38"/>
+              <path d="M24 66h52" stroke="#C59B38" stroke-width="1.5" stroke-dasharray="3 3"/>
+            </svg>
+          </div>`,
+        qahwa: `
+          <div class="relative w-full ${hClass} bg-gradient-to-br from-[#F5EDE2] via-[#E8DAC7] to-[#D6C1A5] dark:from-[#29231E] dark:via-[#201B17] dark:to-[#171310] flex items-center justify-center overflow-hidden">
+            <svg class="w-28 h-28 sm:w-36 sm:h-36 drop-shadow-md" viewBox="0 0 100 100" fill="none">
+              <path d="M24 44h22l-3 26c-1 4-4 6-8 6s-7-2-8-6l-3-26z" fill="#FAF7F2" stroke="#B85D3B" stroke-width="2.5"/>
+              <path d="M54 44h22l-3 26c-1 4-4 6-8 6s-7-2-8-6l-3-26z" fill="#FAF7F2" stroke="#B85D3B" stroke-width="2.5"/>
+              <path d="M26 54h18M56 54h18" stroke="#C59B38" stroke-width="2.5"/>
+              <circle cx="35" cy="62" r="2.5" fill="#B85D3B"/>
+              <circle cx="65" cy="62" r="2.5" fill="#B85D3B"/>
+            </svg>
+          </div>`,
+        'video-motion': `
+          <div class="relative w-full ${hClass} bg-gradient-to-tr from-[#141210] via-[#2B2118] to-[#5C3D1E] flex items-center justify-center overflow-hidden">
+            <svg class="w-32 h-32 text-oman-brass/40 animate-spin" style="animation-duration: 24s;" viewBox="0 0 100 100" fill="none">
+              <polygon points="50,5 90,28 90,72 50,95 10,72 10,28" stroke="currentColor" stroke-width="1.5"/>
+              <polygon points="50,15 80,32 80,68 50,85 20,68 20,32" stroke="#E3C36E" stroke-width="1.5"/>
+            </svg>
+            <div class="absolute w-12 h-12 rounded-full bg-oman-brass/90 text-stone-950 flex items-center justify-center shadow-lg">
+              <svg class="w-6 h-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="absolute top-3 start-3 px-2 py-0.5 rounded bg-black/70 text-oman-brassLight font-mono text-[10px] font-bold">4K 60FPS</span>
+            ${watermarkOverlay}
+          </div>`,
+        'video-drone': `
+          <div class="relative w-full ${hClass} bg-gradient-to-b from-[#2D4A3E] via-[#4A5D4E] to-[#1C2621] flex items-center justify-center overflow-hidden">
+            <svg class="w-full h-full opacity-55" viewBox="0 0 200 120" preserveAspectRatio="none">
+              <path d="M0 120 L0 70 Q50 45 100 65 T200 50 L200 120 Z" fill="#1F3329"/>
+              <path d="M0 120 L0 88 Q65 68 130 85 T200 75 L200 120 Z" fill="#14221B"/>
+              <circle cx="155" cy="30" r="14" fill="#E3C36E" fill-opacity="0.75"/>
+            </svg>
+            <div class="absolute w-12 h-12 rounded-full bg-white/90 text-stone-950 flex items-center justify-center shadow-lg">
+              <svg class="w-6 h-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="absolute top-3 start-3 px-2 py-0.5 rounded bg-black/70 text-emerald-300 font-mono text-[10px] font-bold">4K DRONE LOG</span>
+            ${watermarkOverlay}
+          </div>`,
+        'photo-fort': `
+          <div class="relative w-full ${hClass} bg-gradient-to-b from-[#E8B878] via-[#C98A4B] to-[#7D4B26] flex items-center justify-center overflow-hidden">
+            <svg class="w-36 h-36 text-[#3E2210]" viewBox="0 0 120 100" fill="none">
+              <rect x="25" y="35" width="70" height="50" fill="currentColor"/>
+              <rect x="42" y="18" width="36" height="22" fill="currentColor"/>
+              <path d="M25 35v-6h6v6h6v-6h6v6M77 35v-6h6v6h6v-6h6v6" stroke="currentColor" stroke-width="3"/>
+              <path d="M53 85V65a7 7 0 0 1 14 0v20" fill="#E8B878"/>
+            </svg>
+            <span class="absolute top-3 start-3 px-2 py-0.5 rounded bg-black/65 text-white font-mono text-[10px] font-bold">8K RAW PACK</span>
+            ${watermarkOverlay}
+          </div>`,
+        calligraphy: `
+          <div class="relative w-full ${hClass} bg-gradient-to-br from-[#FAF7F2] via-[#F2E8D5] to-[#E5D3B3] dark:from-[#24201C] dark:via-[#1C1815] dark:to-[#14110F] flex items-center justify-center overflow-hidden">
+            <div class="border-2 border-oman-brass/60 px-6 py-4 rounded-2xl text-center">
+              <div class="text-2xl sm:text-3xl font-extrabold text-oman-terracotta dark:text-oman-brassLight tracking-wide">عُمانُ المجد</div>
+              <div class="text-[10px] font-mono text-stone-500 mt-1">VECTOR • 300 DPI</div>
+            </div>
+            ${watermarkOverlay}
+          </div>`
+      };
+
+      return visuals[product.svgTheme] || visuals.pottery;
+    }
+
+    // ==================== CATALOG RENDERING ====================
+    function setCategoryFilter(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-pill').forEach(btn => {
+        if (btn.dataset.cat === cat) {
+          btn.className = 'cat-pill px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-oman-terracotta text-white shadow-sm';
+        } else {
+          btn.className = 'cat-pill px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] hover:border-oman-terracotta';
+        }
+      });
+      renderCatalog();
+    }
+
+    function resetFilters() {
+      document.getElementById('search-input').value = '';
+      document.getElementById('sort-select').value = 'featured';
+      setCategoryFilter('all');
+    }
+
+    function renderCatalog() {
+      const grid = document.getElementById('product-grid');
+      const emptyState = document.getElementById('empty-catalog');
+      const query = document.getElementById('search-input').value.trim().toLowerCase();
+      const sortBy = document.getElementById('sort-select').value;
+
+      let filtered = products.filter(p => {
+        const matchesCat = currentCategory === 'all' || p.type === currentCategory;
+        const matchesQuery = !query ||
+          p.titleAr.toLowerCase().includes(query) ||
+          p.titleEn.toLowerCase().includes(query) ||
+          p.descAr.toLowerCase().includes(query) ||
+          p.descEn.toLowerCase().includes(query);
+        return matchesCat && matchesQuery;
+      });
+
+      if (sortBy === 'price-asc') {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (sortBy === 'price-desc') {
+        filtered.sort((a, b) => b.price - a.price);
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      grid.innerHTML = filtered.map(p => {
+        const isPhysical = p.type === 'handmade';
+        const title = currentLang === 'ar' ? p.titleAr : p.titleEn;
+        const catLabel = currentLang === 'ar' ? p.categoryLabelAr : p.categoryLabelEn;
+        const spec = currentLang === 'ar' ? p.specAr : p.specEn;
+        const artisan = currentLang === 'ar' ? p.artisanAr : p.artisanEn;
+        const isWished = wishlist.includes(p.id);
+        const outOfStock = isPhysical && p.stock <= 0;
+
+        const fulfillBadge = isPhysical
+          ? `<span class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-oman-terracotta/12 text-oman-terracotta dark:text-oman-brassLight">🚚 ${currentLang === 'ar' ? 'شحن محلي' : 'Local Shipping'}</span>`
+          : `<span class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">⚡ ${currentLang === 'ar' ? 'تحميل فوري' : 'Instant Download'}</span>`;
+
+        const stockText = isPhysical
+          ? (outOfStock
+              ? `<span class="text-rose-600 font-bold">${currentLang === 'ar' ? 'نفدت الكمية' : 'Sold Out'}</span>`
+              : `<span class="text-stone-500 dark:text-stone-400">${currentLang === 'ar' ? `متبقي ${p.stock} قطع` : `${p.stock} in stock`}</span>`)
+          : `<span class="text-stone-500 dark:text-stone-400">${spec}</span>`;
+
+        return `
+          <article class="group rounded-3xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col">
+            <div class="relative cursor-pointer" onclick="openProductModal('${p.id}')">
+              ${renderProductArtwork(p, false)}
+              <button onclick="event.stopPropagation(); toggleWishlist('${p.id}')" aria-label="Wishlist" class="absolute top-3 end-3 w-9 h-9 rounded-full bg-white/90 dark:bg-stone-900/90 backdrop-blur flex items-center justify-center shadow hover:scale-110 transition-transform ${isWished ? 'text-rose-500' : 'text-stone-500'}">
+                ${isWished ? '♥' : '♡'}
+              </button>
+              <div class="absolute bottom-3 start-3">
+                ${fulfillBadge}
+              </div>
+            </div>
+
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between text-[11px] font-semibold text-stone-400 mb-1">
+                  <span>${catLabel}</span>
+                  <span>${artisan}</span>
+                </div>
+                <h3 onclick="openProductModal('${p.id}')" class="font-extrabold text-base leading-snug cursor-pointer group-hover:text-oman-terracotta dark:group-hover:text-oman-brassLight transition-colors">
+                  ${title}
+                </h3>
+                <div class="text-xs mt-2">${stockText}</div>
+              </div>
+
+              <div class="mt-5 pt-4 border-t border-[#E7DFD3] dark:border-[#332E29] flex items-center justify-between gap-2">
+                <div class="font-extrabold text-lg text-oman-terracotta dark:text-oman-brassLight tabular-nums">
+                  ${formatOMR(p.price)}
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <button onclick="openProductModal('${p.id}')" class="px-3 py-2 rounded-xl border border-[#E7DFD3] dark:border-[#332E29] text-xs font-bold hover:border-oman-terracotta transition-colors">
+                    ${currentLang === 'ar' ? 'معاينة' : 'Preview'}
+                  </button>
+                  <button onclick="addToCart('${p.id}')" ${outOfStock ? 'disabled' : ''} class="px-3.5 py-2 rounded-xl bg-oman-terracotta hover:bg-oman-terracottaDark disabled:opacity-40 text-white text-xs font-bold transition-colors">
+                    ${currentLang === 'ar' ? '+ السلة' : '+ Cart'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    // ==================== PRODUCT DETAIL & PREVIEW MODAL ====================
+    function openProductModal(productId) {
+      const p = products.find(item => item.id === productId);
+      if (!p) return;
+
+      const isPhysical = p.type === 'handmade';
+      const title = currentLang === 'ar' ? p.titleAr : p.titleEn;
+      const desc = currentLang === 'ar' ? p.descAr : p.descEn;
+      const spec = currentLang === 'ar' ? p.specAr : p.specEn;
+      const artisan = currentLang === 'ar' ? p.artisanAr : p.artisanEn;
+      const variants = currentLang === 'ar' ? p.variantsAr : p.variantsEn;
+
+      const modalContent = document.getElementById('product-modal-content');
+      modalContent.innerHTML = `
+        <div class="relative">
+          <button onclick="closeProductModal()" class="absolute top-4 end-4 z-10 w-9 h-9 rounded-full bg-white/90 dark:bg-stone-900/90 text-stone-700 dark:text-stone-200 font-bold shadow flex items-center justify-center hover:scale-105">✕</button>
+          ${renderProductArtwork(p, true)}
+        </div>
+        <div class="p-6 sm:p-8 space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <span class="text-xs font-bold px-3 py-1 rounded-full ${isPhysical ? 'bg-oman-terracotta/15 text-oman-terracotta' : 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300'}">
+              ${isPhysical
+                ? (currentLang === 'ar' ? '🚚 منتج ملموس — شحن محلي لجميع محافظات عُمان' : '🚚 Physical Craft — Local Oman Shipping')
+                : (currentLang === 'ar' ? '⚡ منتج رقمي — رابط تحميل فوري بدون علامة مائية بعد الدفع' : '⚡ Digital Asset — Instant Watermark-Free Download')}
+            </span>
+            <span class="text-xs text-stone-500 font-semibold">${artisan}</span>
+          </div>
+
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold">${title}</h2>
+            <p class="text-sm text-stone-600 dark:text-stone-300 mt-2 leading-relaxed">${desc}</p>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-[#F6F1EA] dark:bg-[#26221E] border border-[#E7DFD3] dark:border-[#332E29] text-xs flex flex-wrap items-center justify-between gap-2">
+            <span class="font-bold">${currentLang === 'ar' ? 'المواصفات الفنية:' : 'Specifications:'}</span>
+            <span class="font-mono text-oman-terracotta dark:text-oman-brassLight font-bold">${spec}</span>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold mb-2">
+              ${isPhysical
+                ? (currentLang === 'ar' ? 'اختر الشكل / اللون:' : 'Select Style / Finish:')
+                : (currentLang === 'ar' ? 'اختر نوع الترخيص:' : 'Select Usage License:')}
+            </label>
+            <select id="modal-variant-select" class="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF7F2] dark:bg-[#141210] border border-[#E7DFD3] dark:border-[#332E29] text-sm font-semibold">
+              ${variants.map((v, idx) => `<option value="${v}" data-extra="${!isPhysical && idx === 1 ? 5 : 0}">${v}</option>`).join('')}
+            </select>
+          </div>
+
+          <div class="pt-4 border-t border-[#E7DFD3] dark:border-[#332E29] flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <div class="text-xs text-stone-500">${currentLang === 'ar' ? 'السعر بالريال العُماني' : 'Price in OMR'}</div>
+              <div class="text-2xl font-extrabold text-oman-terracotta dark:text-oman-brassLight tabular-nums">${formatOMR(p.price)}</div>
+            </div>
+            <button onclick="addFromModal('${p.id}')" class="px-6 py-3.5 rounded-xl bg-oman-terracotta hover:bg-oman-terracottaDark text-white font-extrabold text-sm shadow-lg transition-all">
+              ${currentLang === 'ar' ? 'إضافة إلى السلة الآن' : 'Add to Cart Now'}
+            </button>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('product-modal').classList.remove('hidden');
+    }
+
+    function closeProductModal() {
+      document.getElementById('product-modal').classList.add('hidden');
+    }
+
+    function addFromModal(productId) {
+      const select = document.getElementById('modal-variant-select');
+      const selectedVariant = select ? select.value : null;
+      const extraCost = select ? Number(select.options[select.selectedIndex].dataset.extra || 0) : 0;
+      addToCart(productId, selectedVariant, extraCost);
+      closeProductModal();
+    }
+
+    // ==================== HYBRID CART & CHECKOUT ====================
+    function addToCart(productId, variantOverride = null, extraPrice = 0) {
+      const p = products.find(item => item.id === productId);
+      if (!p) return;
+
+      const isPhysical = p.type === 'handmade';
+      if (isPhysical && p.stock <= 0) {
+        showToast(currentLang === 'ar' ? 'عذراً، نفدت الكمية من هذا المنتج' : 'Sorry, this item is out of stock', 'error');
+        return;
+      }
+
+      const defaultVariant = currentLang === 'ar' ? p.variantsAr[0] : p.variantsEn[0];
+      const variant = variantOverride || defaultVariant;
+      const unitPrice = p.price + extraPrice;
+      const cartKey = `${p.id}__${variant}`;
+
+      const existing = cart.find(item => item.cartKey === cartKey);
+      if (existing) {
+        if (isPhysical && existing.qty >= p.stock) {
+          showToast(currentLang === 'ar' ? 'وصلت للحد الأقصى المتوفر في المخزون' : 'Maximum available stock reached', 'error');
+          return;
+        }
+        if (!isPhysical) {
+          showToast(currentLang === 'ar' ? 'التصميم الرقمي مضاف مسبقاً إلى سلتك' : 'Digital asset is already in your cart', 'info');
+          return;
+        }
+        existing.qty += 1;
+      } else {
+        cart.push({
+          cartKey,
+          productId: p.id,
+          type: p.type,
+          titleAr: p.titleAr,
+          titleEn: p.titleEn,
+          variant,
+          price: unitPrice,
+          qty: 1,
+          spec: currentLang === 'ar' ? p.specAr : p.specEn
+        });
+      }
+
+      updateCartUI();
+      showToast(
+        currentLang === 'ar' ? `تمت إضافة «${p.titleAr}» للسلة` : `Added "${p.titleEn}" to cart`,
+        'success'
+      );
+    }
+
+    function updateCartQty(cartKey, delta) {
+      const idx = cart.findIndex(item => item.cartKey === cartKey);
+      if (idx === -1) return;
+
+      const item = cart[idx];
+      const prod = products.find(p => p.id === item.productId);
+
+      if (delta > 0 && item.type === 'handmade' && prod && item.qty >= prod.stock) {
+        showToast(currentLang === 'ar' ? 'لا تتوفر كمية إضافية بالمخزون' : 'No more stock available', 'error');
+        return;
+      }
+
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart.splice(idx, 1);
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const countBadge = document.getElementById('cart-count');
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      countBadge.textContent = totalItems;
+
+      const container = document.getElementById('cart-items-container');
+      const form = document.getElementById('checkout-form');
+      const indicator = document.getElementById('cart-type-indicator');
+
+      if (cart.length === 0) {
+        form.classList.add('hidden');
+        indicator.textContent = currentLang === 'ar' ? 'السلة فارغة حالياً' : 'Your cart is empty';
+        container.innerHTML = `
+          <div class="text-center py-12">
+            <div class="text-4xl mb-3">🧺</div>
+            <p class="font-bold text-stone-600 dark:text-stone-300">${currentLang === 'ar' ? 'سلة المشتريات فارغة' : 'Your shopping cart is empty'}</p>
+            <p class="text-xs text-stone-400 mt-1">${currentLang === 'ar' ? 'أضف مشغولات يدوية عُمانية أو تصاميم رقمية للبدء' : 'Add Omani handmade crafts or digital designs to begin'}</p>
+          </div>
+        `;
+        return;
+      }
+
+      form.classList.remove('hidden');
+
+      const hasPhysical = cart.some(i => i.type === 'handmade');
+      const hasDigital = cart.some(i => i.type !== 'handmade');
+
+      // Smart Cart Mode Indicator & Conditional Shipping Form
+      const shippingSection = document.getElementById('shipping-fields-section');
+      const digitalOnlyNotice = document.getElementById('digital-only-notice');
+      const codOption = document.getElementById('cod-option-label');
+
+      if (hasPhysical && hasDigital) {
+        indicator.textContent = currentLang === 'ar' ? 'طلب هجين: شحن محلي + تسليم رقمي فوري' : 'Hybrid Order: Local Shipping + Instant Digital';
+        shippingSection.classList.remove('hidden');
+        digitalOnlyNotice.classList.add('hidden');
+        codOption.classList.remove('hidden');
+      } else if (hasPhysical) {
+        indicator.textContent = currentLang === 'ar' ? 'طلب مشغولات يدوية (شحن محلي داخل عُمان)' : 'Handmade Crafts Order (Local Oman Shipping)';
+        shippingSection.classList.remove('hidden');
+        digitalOnlyNotice.classList.add('hidden');
+        codOption.classList.remove('hidden');
+      } else {
+        indicator.textContent = currentLang === 'ar' ? 'طلب رقمي بالكامل (تسليم فوري بدون شحن)' : '100% Digital Order (Instant Delivery, No Shipping)';
+        shippingSection.classList.add('hidden');
+        digitalOnlyNotice.classList.remove('hidden');
+        codOption.classList.add('hidden');
+        document.querySelector('input[name="payMethod"][value="card"]').checked = true;
+      }
+
+      container.innerHTML = cart.map(item => {
+        const title = currentLang === 'ar' ? item.titleAr : item.titleEn;
+        const isPhys = item.type === 'handmade';
+        return `
+          <div class="p-3.5 rounded-2xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] flex items-center justify-between gap-3">
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-1.5">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${isPhys ? 'bg-oman-terracotta/15 text-oman-terracotta' : 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300'}">
+                  ${isPhys ? (currentLang === 'ar' ? 'شحن محلي' : 'Physical') : (currentLang === 'ar' ? 'رقمي' : 'Digital')}
+                </span>
+                <span class="text-[11px] text-stone-400 truncate">${item.variant}</span>
+              </div>
+              <h4 class="font-bold text-sm truncate mt-1">${title}</h4>
+              <div class="text-xs font-extrabold text-oman-terracotta dark:text-oman-brassLight mt-0.5 tabular-nums">${formatOMR(item.price * item.qty)}</div>
+            </div>
+
+            <div class="flex items-center gap-1.5 bg-[#FAF7F2] dark:bg-[#141210] p-1 rounded-xl border border-[#E7DFD3] dark:border-[#332E29]">
+              <button onclick="updateCartQty('${item.cartKey}', -1)" class="w-7 h-7 rounded-lg font-bold hover:bg-stone-200 dark:hover:bg-stone-800">-</button>
+              <span class="w-6 text-center text-xs font-bold tabular-nums">${item.qty}</span>
+              ${isPhys ? `<button onclick="updateCartQty('${item.cartKey}', 1)" class="w-7 h-7 rounded-lg font-bold hover:bg-stone-200 dark:hover:bg-stone-800">+</button>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      updateCartTotals();
+    }
+
+    function updateCartTotals() {
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const hasPhysical = cart.some(i => i.type === 'handmade');
+      const gov = document.getElementById('ship-gov')?.value || '';
+
+      let shipping = 0;
+      if (hasPhysical) {
+        if (subtotal >= 25.000) {
+          shipping = 0; // Free shipping over 25 OMR
+        } else {
+          shipping = gov.includes('ظفار') || gov.includes('مسندم') || gov.includes('الوسطى') ? 3.000 : 2.000;
+        }
+      }
+
+      const total = subtotal + shipping;
+      document.getElementById('summary-subtotal').textContent = formatOMR(subtotal);
+      document.getElementById('summary-shipping').textContent = hasPhysical
+        ? (shipping === 0 ? (currentLang === 'ar' ? 'مجاني (0.000 ر.ع.)' : 'FREE (0.000 OMR)') : formatOMR(shipping))
+        : (currentLang === 'ar' ? 'لا ينطبق (رقمي)' : 'N/A (Digital)');
+      document.getElementById('summary-total').textContent = formatOMR(total);
+    }
+
+    function handleCheckoutSubmit(e) {
+      e.preventDefault();
+      if (cart.length === 0) return;
+
+      const hasPhysical = cart.some(i => i.type === 'handmade');
+      const hasDigital = cart.some(i => i.type !== 'handmade');
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const gov = document.getElementById('ship-gov').value;
+      const shipping = hasPhysical ? (subtotal >= 25 ? 0 : (gov.includes('ظفار') || gov.includes('مسندم') || gov.includes('الوسطى') ? 3.000 : 2.000)) : 0;
+
+      // Decrement stock for physical handmade products
+      cart.forEach(item => {
+        if (item.type === 'handmade') {
+          const p = products.find(prod => prod.id === item.productId);
+          if (p) p.stock = Math.max(0, p.stock - item.qty);
+        }
+      });
+
+      const newOrder = {
+        id: 'OMN-' + Math.floor(1000 + Math.random() * 9000),
+        date: new Date().toISOString().split('T')[0],
+        customerName: document.getElementById('cust-name').value,
+        governorate: hasPhysical ? gov : (currentLang === 'ar' ? 'تسليم رقمي فوري' : 'Instant Digital'),
+        status: hasPhysical ? 'processing' : 'delivered',
+        paymentMethod: document.querySelector('input[name="payMethod"]:checked').value,
+        subtotal,
+        shipping,
+        total: subtotal + shipping,
+        hasPhysical,
+        hasDigital,
+        items: JSON.parse(JSON.stringify(cart))
+      };
+
+      orders.unshift(newOrder);
+      cart = [];
+      updateCartUI();
+      renderCatalog();
+      renderOrders();
+      renderAdminDashboard();
+      toggleCartDrawer();
+      switchView('orders');
+
+      showToast(
+        currentLang === 'ar'
+          ? `تم تأكيد طلبك #${newOrder.id} بنجاح! يمكنك تحميل ملفاتك الرقمية الآن.`
+          : `Order #${newOrder.id} confirmed! Your digital files are ready to download.`,
+        'success'
+      );
+    }
+
+    // ==================== CUSTOMER ORDERS & INSTANT DIGITAL DOWNLOADS ====================
+    function renderOrders() {
+      const list = document.getElementById('orders-list');
+      document.getElementById('orders-badge').textContent = orders.length;
+
+      if (orders.length === 0) {
+        list.innerHTML = `<div class="text-center py-12 text-stone-500">لا توجد طلبات حتى الآن.</div>`;
+        return;
+      }
+
+      const statusLabels = {
+        processing: { ar: 'قيد التجهيز والتغليف', en: 'Preparing & Packaging', cls: 'bg-amber-500/15 text-amber-700 dark:text-amber-300' },
+        shipped: { ar: 'خرج للتوصيل المحلي', en: 'Out for Local Delivery', cls: 'bg-sky-500/15 text-sky-700 dark:text-sky-300' },
+        delivered: { ar: 'مكتمل / تم التسليم', en: 'Delivered / Completed', cls: 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300' }
+      };
+
+      list.innerHTML = orders.map(order => {
+        const st = statusLabels[order.status] || statusLabels.processing;
+        return `
+          <div class="rounded-3xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] p-5 sm:p-6 shadow-sm space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#E7DFD3] dark:border-[#332E29]">
+              <div>
+                <div class="flex items-center gap-2.5">
+                  <span class="font-extrabold text-base sm:text-lg tabular-nums">#${order.id}</span>
+                  <span class="text-xs font-bold px-3 py-1 rounded-full ${st.cls}">${currentLang === 'ar' ? st.ar : st.en}</span>
+                </div>
+                <div class="text-xs text-stone-500 mt-1">
+                  ${order.date} • ${order.customerName} • ${order.governorate}
+                </div>
+              </div>
+              <div class="text-end">
+                <div class="text-xs text-stone-400">${currentLang === 'ar' ? 'الإجمالي المدفوع' : 'Total Paid'}</div>
+                <div class="font-extrabold text-lg text-oman-terracotta dark:text-oman-brassLight tabular-nums">${formatOMR(order.total)}</div>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              ${order.items.map(item => {
+                const isDigital = item.type !== 'handmade';
+                const title = currentLang === 'ar' ? item.titleAr : item.titleEn;
+                return `
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl bg-[#FAF7F2] dark:bg-[#141210] border border-[#E7DFD3] dark:border-[#332E29]">
+                    <div>
+                      <div class="flex items-center gap-2">
+                        <span class="text-[11px] font-bold px-2 py-0.5 rounded ${isDigital ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300' : 'bg-oman-terracotta/15 text-oman-terracotta'}">
+                          ${isDigital ? (currentLang === 'ar' ? 'ملف رقمي مرخص' : 'Licensed Digital Asset') : (currentLang === 'ar' ? `مشغول يدوي × ${item.qty}` : `Handmade Craft × ${item.qty}`)}
+                        </span>
+                        <span class="text-xs text-stone-400">${item.variant}</span>
+                      </div>
+                      <div class="font-bold text-sm mt-1">${title}</div>
+                    </div>
+
+                    ${isDigital ? `
+                      <button onclick="downloadDigitalAsset('${order.id}', '${item.productId}')" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-2 self-start sm:self-center shadow-sm transition-colors">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        <span>${currentLang === 'ar' ? 'تحميل النسخة الأصلية (بدون علامة)' : 'Download Master File'}</span>
+                      </button>
+                    ` : `
+                      <span class="text-xs font-semibold text-stone-500">
+                        ${currentLang === 'ar' ? 'شحن محلي إلى:' : 'Local Delivery to:'} <strong>${order.governorate.split('|')[0]}</strong>
+                      </span>
+                    `}
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function downloadDigitalAsset(orderId, productId) {
+      const p = products.find(item => item.id === productId);
+      if (!p) return;
+
+      // Generate a real downloadable SVG/License certificate file in the browser
+      const fileContent = `<!-- MADE IN OMAN | صُنع في عُمان — OFFICIAL LICENSED DIGITAL MASTER -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1C1917"/>
+      <stop offset="100%" stop-color="#3A281C"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect x="40" y="40" width="1120" height="720" rx="24" fill="none" stroke="#C59B38" stroke-width="4"/>
+  <text x="600" y="260" fill="#E3C36E" font-family="sans-serif" font-size="44" font-weight="bold" text-anchor="middle">صُنع في عُمان | MADE IN OMAN</text>
+  <text x="600" y="340" fill="#FAF7F2" font-family="sans-serif" font-size="30" text-anchor="middle">${p.titleEn}</text>
+  <text x="600" y="410" fill="#A8A29E" font-family="monospace" font-size="22" text-anchor="middle">Order ID: ${orderId} • Asset ID: ${p.id} • Watermark Removed</text>
+  <text x="600" y="480" fill="#10B981" font-family="monospace" font-size="20" text-anchor="middle">Spec: ${p.specEn}</text>
+</svg>`;
+
+      const blob = new Blob([fileContent], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `MadeInOman_${p.id}_MasterAsset.svg`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      showToast(
+        currentLang === 'ar' ? `بدأ تحميل الملف الأصلي لـ «${p.titleAr}»` : `Downloading master file for "${p.titleEn}"`,
+        'success'
+      );
+    }
+
+    // ==================== MERCHANT ADMIN DASHBOARD ====================
+    function renderAdminDashboard() {
+      const totalRev = orders.reduce((s, o) => s + o.total, 0);
+      const physOrders = orders.filter(o => o.hasPhysical).length;
+      const digOrders = orders.filter(o => o.hasDigital).length;
+      const lowStockItems = products.filter(p => p.type === 'handmade' && p.stock < 4);
+
+      document.getElementById('kpi-revenue').textContent = formatOMR(totalRev);
+      document.getElementById('kpi-orders').textContent = orders.length;
+      document.getElementById('kpi-split').textContent = currentLang === 'ar'
+        ? `${physOrders} شحن محلي • ${digOrders} رقمي`
+        : `${physOrders} Local Ship • ${digOrders} Digital`;
+      document.getElementById('kpi-products').textContent = products.length;
+      document.getElementById('kpi-lowstock').textContent = lowStockItems.length;
+
+      refreshAiInsight();
+
+      // Admin Orders List
+      const adminOrdersEl = document.getElementById('admin-orders-list');
+      adminOrdersEl.innerHTML = orders.map(o => `
+        <div class="p-4 rounded-2xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-sm tabular-nums">#${o.id}</span>
+              <span class="text-xs text-stone-500">${o.customerName}</span>
+            </div>
+            <div class="text-xs text-stone-400 mt-0.5">${o.governorate} • <strong class="text-oman-terracotta dark:text-oman-brassLight tabular-nums">${formatOMR(o.total)}</strong></div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            ${o.hasPhysical ? `
+              <select onchange="updateOrderStatus('${o.id}', this.value)" class="px-3 py-1.5 rounded-xl bg-[#FAF7F2] dark:bg-[#141210] border border-[#E7DFD3] dark:border-[#332E29] text-xs font-bold">
+                <option value="processing" ${o.status === 'processing' ? 'selected' : ''}>قيد التجهيز</option>
+                <option value="shipped" ${o.status === 'shipped' ? 'selected' : ''}>تم الشحن المحلي</option>
+                <option value="delivered" ${o.status === 'delivered' ? 'selected' : ''}>تم التوصيل</option>
+              </select>
+            ` : `<span class="text-xs font-bold px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-600">سُلّم رقمياً تلقائياً</span>`}
+          </div>
+        </div>
+      `).join('');
+
+      // Admin Products Inventory List
+      const adminProdsEl = document.getElementById('admin-products-list');
+      adminProdsEl.innerHTML = products.map(p => {
+        const isPhys = p.type === 'handmade';
+        const isLow = isPhys && p.stock < 4;
+        return `
+          <div class="p-3.5 rounded-2xl bg-white dark:bg-[#1F1C19] border ${isLow ? 'border-amber-500/50' : 'border-[#E7DFD3] dark:border-[#332E29]'} flex items-center justify-between gap-3">
+            <div class="min-w-0">
+              <div class="font-bold text-xs sm:text-sm truncate">${currentLang === 'ar' ? p.titleAr : p.titleEn}</div>
+              <div class="text-[11px] text-stone-500 mt-0.5 tabular-nums">
+                ${formatOMR(p.price)} • ${isPhys ? (currentLang === 'ar' ? `المخزون: ${p.stock}` : `Stock: ${p.stock}`) : '∞ Digital'}
+              </div>
+            </div>
+            ${isPhys ? `
+              <button onclick="restockProduct('${p.id}')" class="px-2.5 py-1.5 rounded-lg bg-oman-terracotta/15 text-oman-terracotta hover:bg-oman-terracotta hover:text-white text-xs font-bold transition-colors shrink-0">
+                +5 ${currentLang === 'ar' ? 'تزويد' : 'Stock'}
+              </button>
+            ` : `<span class="text-[11px] font-mono text-emerald-600 font-bold shrink-0">4K/8K</span>`}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function updateOrderStatus(orderId, newStatus) {
+      const order = orders.find(o => o.id === orderId);
+      if (order) {
+        order.status = newStatus;
+        renderOrders();
+        showToast(currentLang === 'ar' ? `تم تحديث حالة الطلب #${orderId}` : `Order #${orderId} status updated`, 'info');
+      }
+    }
+
+    function restockProduct(productId) {
+      const p = products.find(item => item.id === productId);
+      if (p) {
+        p.stock += 5;
+        renderCatalog();
+        renderAdminDashboard();
+        showToast(currentLang === 'ar' ? `تمت إضافة 5 قطع إلى «${p.titleAr}»` : `Added 5 units to "${p.titleEn}"`, 'success');
+      }
+    }
+
+    function refreshAiInsight() {
+      const lowStock = products.filter(p => p.type === 'handmade' && p.stock < 4);
+      const insightEl = document.getElementById('ai-advisor-text');
+      if (currentLang === 'ar') {
+        insightEl.textContent = lowStock.length > 0
+          ? `تنبيه ذكي: لديك ${lowStock.length} مشغولات يدوية أوشكت على النفاد (مثل «${lowStock[0].titleAr}»). يُنصح بطلب دفعة جديدة من الحرفيين قبل عطلة نهاية الأسبوع، مع إتاحة باقة رقمية مرافقة لزيادة متوسط قيمة السلة إلى فوق 25.000 ر.ع.`
+          : `أداء ممتاز! جميع المشغولات اليدوية متوفرة بمخزون آمن. نقترح ترويج حزم الفيديو 4K والتصاميم الرقمية للشركات العُمانية لأن هامش ربحها 100% ولا تتطلب تكاليف شحن محلي.`;
+      } else {
+        insightEl.textContent = lowStock.length > 0
+          ? `Smart Alert: ${lowStock.length} handmade crafts are running low (including "${lowStock[0].titleEn}"). Restock with local artisans soon and bundle digital assets to lift average order value above 25.000 OMR.`
+          : `Healthy Inventory! All handmade crafts have strong stock levels. Consider promoting 4K motion packs to Omani agencies for zero-shipping-cost high-margin sales.`;
+      }
+    }
+
+    // Add Product Modal Handlers
+    function openAddProductModal() { document.getElementById('add-product-modal').classList.remove('hidden'); }
+    function closeAddProductModal() { document.getElementById('add-product-modal').classList.add('hidden'); }
+    function toggleNewProductFields() {
+      const type = document.getElementById('new-prod-type').value;
+      document.getElementById('new-stock-wrap').classList.toggle('hidden', type !== 'handmade');
+      document.getElementById('new-spec-wrap').classList.toggle('hidden', type === 'handmade');
+    }
+    function handleAddProduct(e) {
+      e.preventDefault();
+      const type = document.getElementById('new-prod-type').value;
+      const titleAr = document.getElementById('new-title-ar').value;
+      const titleEn = document.getElementById('new-title-en').value;
+      const price = parseFloat(document.getElementById('new-price').value);
+      const stock = parseInt(document.getElementById('new-stock').value || '5', 10);
+      const spec = document.getElementById('new-spec').value;
+      const descAr = document.getElementById('new-desc-ar').value;
+
+      const themeMap = { handmade: 'pottery', photo: 'calligraphy', video: 'video-motion' };
+      products.unshift({
+        id: 'OM-' + Math.floor(200 + Math.random() * 800),
+        type,
+        categoryLabelAr: type === 'handmade' ? 'مشغول يدوي' : (type === 'photo' ? 'تصميم صور' : 'تصميم فيديو'),
+        categoryLabelEn: type === 'handmade' ? 'Handmade Craft' : (type === 'photo' ? 'Photo Design' : 'Video Design'),
+        titleAr,
+        titleEn,
+        descAr,
+        descEn: descAr,
+        price,
+        stock: type === 'handmade' ? stock : 999,
+        specAr: type === 'handmade' ? 'صناعة يدوية عُمانية' : spec,
+        specEn: type === 'handmade' ? 'Handcrafted in Oman' : spec,
+        variantsAr: type === 'handmade' ? ['إصدار قياسي'] : ['ترخيص شخصي', 'ترخيص تجاري (+5 ر.ع.)'],
+        variantsEn: type === 'handmade' ? ['Standard Edition'] : ['Personal License', 'Commercial License (+5 OMR)'],
+        artisanAr: 'مبدع عُماني معتمد',
+        artisanEn: 'Verified Omani Creator',
+        svgTheme: themeMap[type]
+      });
+
+      closeAddProductModal();
+      renderCatalog();
+      renderAdminDashboard();
+      showToast(currentLang === 'ar' ? 'تم نشر المنتج الجديد في المتجر بنجاح!' : 'New product published to storefront!', 'success');
+    }
+
+    // ==================== WISHLIST, NAVIGATION, THEME & LANGUAGE ====================
+    function toggleWishlist(productId) {
+      const idx = wishlist.indexOf(productId);
+      if (idx === -1) {
+        wishlist.push(productId);
+        showToast(currentLang === 'ar' ? 'أُضيف إلى قائمة المفضلة' : 'Added to wishlist', 'info');
+      } else {
+        wishlist.splice(idx, 1);
+      }
+      const badge = document.getElementById('wishlist-count');
+      badge.textContent = wishlist.length;
+      badge.classList.toggle('hidden', wishlist.length === 0);
+      renderCatalog();
+      renderWishlistDrawer();
+    }
+
+    function renderWishlistDrawer() {
+      const container = document.getElementById('wishlist-items-container');
+      if (wishlist.length === 0) {
+        container.innerHTML = `<div class="text-center py-12 text-sm text-stone-500">${currentLang === 'ar' ? 'قائمة المفضلة فارغة' : 'Your wishlist is empty'}</div>`;
+        return;
+      }
+      container.innerHTML = wishlist.map(id => {
+        const p = products.find(item => item.id === id);
+        if (!p) return '';
+        return `
+          <div class="p-3.5 rounded-2xl bg-white dark:bg-[#1F1C19] border border-[#E7DFD3] dark:border-[#332E29] flex items-center justify-between gap-3">
+            <div>
+              <div class="font-bold text-sm">${currentLang === 'ar' ? p.titleAr : p.titleEn}</div>
+              <div class="text-xs font-extrabold text-oman-terracotta mt-0.5 tabular-nums">${formatOMR(p.price)}</div>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <button onclick="addToCart('${p.id}'); toggleWishlistDrawer();" class="px-3 py-1.5 rounded-xl bg-oman-terracotta text-white text-xs font-bold">${currentLang === 'ar' ? '+ السلة' : '+ Cart'}</button>
+              <button onclick="toggleWishlist('${p.id}')" class="p-1.5 text-stone-400 hover:text-rose-500">✕</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleCartDrawer() {
+      document.getElementById('cart-drawer').classList.toggle('hidden');
+      updateCartUI();
+    }
+
+    function toggleWishlistDrawer() {
+      document.getElementById('wishlist-drawer').classList.toggle('hidden');
+      renderWishlistDrawer();
+    }
+
+    function switchView(viewName) {
+      ['store', 'orders', 'admin'].forEach(v => {
+        document.getElementById(`view-${v}`).classList.toggle('hidden', v !== viewName);
+        const navBtn = document.getElementById(`nav-${v}`);
+        if (navBtn) {
+          navBtn.className = v === viewName
+            ? 'nav-tab px-4 py-2 rounded-lg text-sm font-bold transition-all bg-white dark:bg-stone-900 text-oman-terracotta dark:text-oman-brassLight shadow-sm flex items-center gap-1.5'
+            : 'nav-tab px-4 py-2 rounded-lg text-sm font-semibold text-stone-600 dark:text-stone-300 hover:text-oman-terracotta transition-all flex items-center gap-1.5';
+        }
+        const mobBtn = document.getElementById(`mob-nav-${v}`);
+        if (mobBtn) {
+          mobBtn.className = v === viewName
+            ? 'flex-1 py-1.5 rounded-lg font-bold text-oman-terracotta dark:text-oman-brassLight bg-oman-terracotta/10'
+            : 'flex-1 py-1.5 rounded-lg font-semibold text-stone-600 dark:text-stone-300';
+        }
+      });
+
+      if (viewName === 'orders') renderOrders();
+      if (viewName === 'admin') renderAdminDashboard();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark');
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'ar' ? 'en' : 'ar';
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+      document.getElementById('lang-label').textContent = currentLang === 'ar' ? 'English' : 'عربي';
+      document.getElementById('search-input').placeholder = currentLang === 'ar'
+        ? 'ابحث عن فخار، سعف، 4K...'
+        : 'Search pottery, palm crafts, 4K...';
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[currentLang][key]) {
+          el.textContent = i18n[currentLang][key];
+        }
+      });
+
+      renderCatalog();
+      updateCartUI();
+      renderOrders();
+      renderAdminDashboard();
+    }
+
+    // Policies Modal
+    function openPolicyModal(type) {
+      const titleEl = document.getElementById('policy-modal-title');
+      const bodyEl = document.getElementById('policy-modal-body');
+
+      if (type === 'shipping') {
+        titleEl.textContent = currentLang === 'ar' ? 'سياسة الشحن المحلي في سلطنة عُمان' : 'Local Oman Shipping Policy';
+        bodyEl.innerHTML = currentLang === 'ar'
+          ? `<p>• <strong>نطاق التوصيل:</strong> نشحن المشغولات اليدوية لجميع محافظات سلطنة عُمان (مسقط، ظفار، الداخلية، الباطنة، الشرقية، الظاهرة، البريمي، مسندم، والوسطى).</p>
+             <p>• <strong>الرسوم:</strong> 2.000 ر.ع. لمعظم المحافظات، و 3.000 ر.ع. لمحافظات ظفار ومسندم والوسطى. <strong>مجاني للطلبات التي تتجاوز 25.000 ر.ع.</strong></p>
+             <p>• <strong>التصاميم الرقمية:</strong> لا تخضع لأي رسوم شحن وتُسلّم فوراً في حسابك بعد الدفع.</p>`
+          : `<p>• <strong>Coverage:</strong> We ship handmade items across all 11 Governorates of Oman within 2–4 business days.</p>
+             <p>• <strong>Rates:</strong> 2.000 OMR flat rate (3.000 OMR for Dhofar, Musandam & Al Wusta). <strong>Free shipping on orders above 25.000 OMR.</strong></p>
+             <p>• <strong>Digital Designs:</strong> Zero shipping fees; instant download unlocked upon checkout.</p>`;
+      } else if (type === 'returns') {
+        titleEl.textContent = currentLang === 'ar' ? 'سياسة الاسترجاع وتراخيص التصاميم' : 'Returns & Digital Licensing';
+        bodyEl.innerHTML = currentLang === 'ar'
+          ? `<p>• <strong>المشغولات اليدوية:</strong> يمكن استبدال أو استرجاع القطع الملموسة خلال 7 أيام من الاستلام بحالتها الأصلية.</p>
+             <p>• <strong>التصاميم الرقمية (الصور والفيديو):</strong> نظراً لطبيعتها الفورية القابلة للتحميل، لا تُسترجع بعد التحميل، ويمنحك الترخيص التجاري حق استخدامها في الإعلانات ومشاريع العملاء.</p>`
+          : `<p>• <strong>Handmade Crafts:</strong> Eligible for return or exchange within 7 days of local delivery in original condition.</p>
+             <p>• <strong>Digital Assets:</strong> Non-refundable once master files are unlocked. Commercial license grants full client & ad usage rights.</p>`;
+      } else {
+        titleEl.textContent = currentLang === 'ar' ? 'تواصل مع «صُنع في عُمان»' : 'Contact Made in Oman Support';
+        bodyEl.innerHTML = currentLang === 'ar'
+          ? `<p>• <strong>المقر الرئيسي:</strong> مرتفعات المطار / الخوض، مسقط، سلطنة عُمان.</p>
+             <p>• <strong>واتساب وخدمة العملاء:</strong> 968 2400 1234+</p>
+             <p>• <strong>البريد الإلكتروني:</strong> salam@madeinoman.om</p>`
+          : `<p>• <strong>Headquarters:</strong> Muscat, Sultanate of Oman.</p>
+             <p>• <strong>Customer Support & WhatsApp:</strong> +968 2400 1234</p>
+             <p>• <strong>Email:</strong> salam@madeinoman.om</p>`;
+      }
+      document.getElementById('policy-modal').classList.remove('hidden');
+    }
+
+    function closePolicyModal() {
+      document.getElementById('policy-modal').classList.add('hidden');
+    }
+
+    // Toast Notification Helper
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toast-container');
+      const colors = {
+        success: 'bg-oman-charcoal text-white border-oman-brass',
+        error: 'bg-rose-700 text-white border-rose-400',
+        info: 'bg-oman-terracotta text-white border-white/30'
+      };
+      const toast = document.createElement('div');
+      toast.className = `pointer-events-auto px-4 py-3 rounded-2xl border shadow-xl text-xs sm:text-sm font-bold flex items-center justify-between gap-3 transition-all ${colors[type] || colors.success}`;
+      toast.innerHTML = `<span>${message}</span><button onclick="this.parentElement.remove()" class="opacity-75 hover:opacity-100">✕</button>`;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 4000);
+    }
+
+    // Initialize Application
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCatalog();
+      updateCartUI();
+      renderOrders();
+      renderAdminDashboard();
+    });
+  </script>
+</body>
+</html>
